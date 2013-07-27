@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
   # puppet modules. This has to be done before the puppet provisioning so that
   # the modules are available when puppet tries to parse its manifests.
 
-  config.vm.provision :shell, :path => "shell/main.sh"
+  config.vm.provision :shell, :path => "shell/main.cmd"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
