@@ -1,1 +1,0 @@
-cinst chocolatey -pre
