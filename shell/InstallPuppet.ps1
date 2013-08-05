@@ -1,7 +1,20 @@
-$CommonAppDataPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::CommonApplicationData)
-$PuppetAppDataPath = Join-Path $CommonAppDataPath 'PuppetLabs\puppet'
-
 $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
+
+# cinst ruby -version 1.9.3.44800
+# Write-Host 'Attempting to add Ruby to the PATH'
+# $env:PATH +=";$env:SystemDrive\ruby193\bin"
+
+# Write-Host "Ensuring puppet"
+# try {
+#     $ErrorActionPreference = "Stop";
+#     Get-Command puppet
+# } catch {
+#     Write-Host "Installing puppet"
+#     & gem install puppet --no-ri --no-rdoc
+# } finally {
+#     $ErrorActionPreference = "Continue";
+# }
+
 cinst puppet
 
 $PuppetInstallPath = "$env:SystemDrive\Program Files (x86)\Puppet Labs\Puppet\bin"
@@ -15,27 +28,6 @@ if (!$envPath.ToLower().Contains($PuppetInstallPath.ToLower())) {
     $StatementTerminator = ";"
     $HasStatementTerminator = $ActualPath -ne $null -and $ActualPath.EndsWith($StatementTerminator)
     If (!$HasStatementTerminator -and $ActualPath -ne $null) {$PuppetInstallPath = $StatementTerminator + $PuppetInstallPath}
-    if (!$PuppetInstallPath.EndsWith($StatementTerminator)) {$PuppetInstallPath += $StatementTerminator}
 
     [Environment]::SetEnvironmentVariable('Path', $ActualPath + $PuppetInstallPath, [System.EnvironmentVariableTarget]::Machine)
 }
-$env:Path += ";$PuppetInstallPath"
-
-if (!(Test-Path $PuppetAppDataPath)) {
-  Write-Host "Creating folder `'$PuppetAppDataPath`'"
-  $null = New-Item -Path "$PuppetAppDataPath" -ItemType Directory
-}
-Copy-Item "c:\vagrant\puppet\Puppetfile" "$PuppetAppDataPath"
-
-cinst ruby -version 1.9.3.44800
-Write-Host 'Attempting to add Ruby to the PATH'
-$env:PATH +=";$env:SystemDrive\ruby193\bin"
-
-#Write-Host "Installing puppet librarian"
-#& gem install puppet --no-ri --no-rdoc
-#& gem install librarian-puppet --no-ri --no-rdoc
-
-#Write-Host "Running librarian-puppet"
-#Push-Location "$PuppetAppDataPath"
-#& librarian-puppet install --clean
-#Pop-Location
