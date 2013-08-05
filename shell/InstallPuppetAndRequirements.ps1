@@ -31,11 +31,11 @@ cinst ruby -version 1.9.3.44800
 Write-Host 'Attempting to add Ruby to the PATH'
 $env:PATH +=";$env:SystemDrive\ruby193\bin"
 
-Write-Host "Installing puppet librarian"
+#Write-Host "Installing puppet librarian"
 #& gem install puppet --no-ri --no-rdoc
-& gem install librarian-puppet --no-ri --no-rdoc
+#& gem install librarian-puppet --no-ri --no-rdoc
 
-Write-Host "Running librarian-puppet"
-Push-Location "$PuppetAppDataPath"
-& librarian-puppet install --clean
-Pop-Location
+#Write-Host "Running librarian-puppet"
+#Push-Location "$PuppetAppDataPath"
+#& librarian-puppet install --clean
+#Pop-Location

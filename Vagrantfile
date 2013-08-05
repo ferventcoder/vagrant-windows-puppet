@@ -58,10 +58,7 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
-  # This shell provisioner installs chocolatey, ruby, puppet, and librarian-puppet.
-  # It runs librarian-puppet to install puppet modules. This has to 
-  # be done before the puppet provisioning so that the modules are 
-  # available when puppet tries to parse its manifests.
+  # This shell provisioner installs chocolatey, ruby, and puppet.
   config.vm.provision :shell, :path => "shell/main.cmd"
 
   #config.vm.action("reload")
