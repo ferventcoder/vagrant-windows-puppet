@@ -1,2 +1,5 @@
 .vagrant
 resources
+*.box
+*.vmdk
+*.ovf
