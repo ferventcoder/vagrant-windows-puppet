@@ -5,6 +5,9 @@ To use this, you need `vagrant` 1.1.x and `vagrant-windows` plugin installed. Va
   
 These are the files that end up in your vagrant folder, so you can just clone them prior to doing a vagrant up.  
   
+### License Requirements for Windows
+The boxes provided in the url explicitly state that they need a license for valid use. After downloading the base box you should provide a license.  
+  
 ### Base Box Requirements
 You must have git installed at a minimum.  
   
