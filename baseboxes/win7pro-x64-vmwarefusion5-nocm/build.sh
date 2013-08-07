@@ -10,6 +10,7 @@ printf "Creating a vagrant basebox named $BoxName \n"
 rm -f $BoxName
 
 # Prepare the VM
+#vmware-vdiskmanager -R "${VMPath}${VMName}.vmdk"
 vmware-vdiskmanager -d "${VMPath}${VMName}.vmdk"
 vmware-vdiskmanager -k "${VMPath}${VMName}.vmdk"
 
