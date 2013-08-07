@@ -1,3 +1,7 @@
-s3cmd put win7pro-x64-vmwarefusion5-nocm.box s3://vagrant-windows/win7pro-x64-vmwarefusion5-nocm.box.upload
-s3cmd del s3://vagrant-windows/win7pro-x64-vmwarefusion5-nocm.box
-s3cmd mv s3://vagrant-windows/win7pro-x64-vmwarefusion5-nocm.box.upload s3://vagrant-windows/win7pro-x64-vmwarefusion5-nocm.box
+S3BaseLocation=s3://vagrant-windows
+BoxBaseName=${PWD##*/}
+BoxName=${BoxBaseName}.box
+
+s3cmd put $BoxName $S3BaseLocation/${BoxName}.upload
+s3cmd del $S3BaseLocation/$BoxName
+s3cmd mv $S3BaseLocation/${BoxName}.upload $S3BaseLocation/$BoxName

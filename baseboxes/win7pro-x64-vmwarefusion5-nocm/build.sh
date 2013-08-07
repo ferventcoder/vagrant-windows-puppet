@@ -1,22 +1,26 @@
 CurrentDir=$(pwd)
 BoxBaseName=${PWD##*/}
-VMWareDir=~/Documents/Virtual\ Machines.localized/win7x64pro.vmwarevm/
+VMName=win7x64pro
+VMPath=~/Documents/Virtual\ Machines.localized/${VMName}.vmwarevm/
 BoxName=${BoxBaseName}.box
 
 printf "Creating a vagrant basebox named $BoxName \n"
 
+# Remove existing artifacts
 rm -f $BoxName
-# Compress and prepare the VM
-vmware-vdiskmanager -d "${VMWareDir}win7x64pro.vmdk"
-vmware-vdiskmanager -k "${VMWareDir}win7x64pro.vmdk"
+
+# Prepare the VM
+vmware-vdiskmanager -d "${VMPath}${VMName}.vmdk"
+vmware-vdiskmanager -k "${VMPath}${VMName}.vmdk"
 
 # Copy the vagrant files over to the vmware folder
-cp -fpv "${CurrentDir}/Vagrantfile" "$VMWareDir"
-cp -fpv "${CurrentDir}/metadata.json" "$VMWareDir"
+cp -fpv "${CurrentDir}/Vagrantfile" "$VMPath"
+cp -fpv "${CurrentDir}/metadata.json" "$VMPath"
 
 # Tar and gzip the box
-pushd "$VMWareDir"
-tar --exclude='*.log' --exclude='*.plist' --exclude='*.png' --exclude='appListCache/*' --exclude='appListCache' --exclude='screenshotsCache/*' --exclude='screenshotsCache' --exclude='win7x64pro.vmx.lck/*' --exclude='win7x64pro.vmx.lck' -cvzf "$CurrentDir/$BoxName" ./*
+pushd "$VMPath"
+tar --exclude='*.log' --exclude='*.plist' --exclude='*.png' --exclude='appListCache/*' --exclude='appListCache' --exclude='screenshotsCache/*' --exclude='screenshotsCache' --exclude="${VMName}.vmx.lck/*" --exclude="${VMName}.vmx.lck" -cvzf "$CurrentDir/$BoxName" ./*
 popd
+
 # Add/update the box
-vagrant box add win7x64pro-vmware $BoxName --provider vmware_fusion --force
+vagrant box add ${VMName}-vmware $BoxName --provider vmware_fusion --force
