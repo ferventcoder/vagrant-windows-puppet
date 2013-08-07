@@ -13,7 +13,7 @@ rm -f box.ovf
 rm -f $BoxName
 
 # Prepare the VM
-vboxmanage export "$VMPath" -o $OVFName --vsys 0 --eula "This is for evaluation purposes only. You must provide a valid license to use this box."
+vboxmanage export "$VMPath" -o $OVFName #--vsys 0 --eula "This is for evaluation purposes only. You must provide a valid license to use this box."
 
 # Tar and gzip the box
 tar --exclude='*.sh' -cvzf $BoxName ./*
