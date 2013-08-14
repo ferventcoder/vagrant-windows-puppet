@@ -1,3 +1,5 @@
+#!/bin/bash
+
 CurrentDir=$(pwd)
 BoxBaseName=${PWD##*/}
 VMName=win7x64pro

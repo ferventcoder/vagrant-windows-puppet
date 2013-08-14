@@ -1,3 +1,5 @@
+#!/bin/bash
+
 S3BaseLocation=s3://vagrant-windows
 BoxBaseName=${PWD##*/}
 BoxName=${BoxBaseName}.box
