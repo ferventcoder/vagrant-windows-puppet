@@ -18,11 +18,11 @@ Vagrant.configure("2") do |config|
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
-  config.vm.provider :virtualbox do |vb|
+  config.vm.provider :virtualbox do |v|
     # Don't boot with headless mode
-    vb.gui = true
+    v.gui = true
     # Use VBoxManage to customize the VM. For example to change memory:
-    #vb.customize ["modifyvm", :id, "--memory", "1024"]
+    #v.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
   # Max time to wait for the guest to shutdown
