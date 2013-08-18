@@ -3,3 +3,5 @@ resources
 *.box
 *.vmdk
 *.ovf
+
+boxes/transient
