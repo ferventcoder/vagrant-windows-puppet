@@ -5,6 +5,7 @@ BoxBaseName=${PWD##*/}
 VMName=win7x64pro
 VMPath=~/Documents/Virtual\ Machines.localized/${VMName}.vmwarevm/
 BoxName=${BoxBaseName}.box
+VagrantBoxName=${VMName}-vmware
 
 printf "Creating a vagrant basebox named $BoxName \n"
 
@@ -26,4 +27,4 @@ tar --exclude='*.log' --exclude='*.plist' --exclude='*.png' --exclude='appListCa
 popd
 
 # Add/update the box
-vagrant box add ${VMName}-vmware $BoxName --provider vmware_fusion --force
+vagrant box add "$VagrantBoxName" $BoxName --provider vmware_fusion --force

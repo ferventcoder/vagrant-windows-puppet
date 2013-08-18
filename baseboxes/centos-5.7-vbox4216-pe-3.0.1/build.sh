@@ -2,11 +2,11 @@
 
 CurrentDir=$(pwd)
 BoxBaseName=${PWD##*/}
-VMName=win7x64pro
+VMName=Learning\ Puppet\ VM\ \(pe-3.0.1\)
 VMPath=~/VirtualBox\ VMs/${VMName}/${VMName}.vbox
 BoxName=${BoxBaseName}.box
 OVFName=box.ovf
-VagrantBoxName=${VMName}
+VagrantBoxName=LearnPuppetVM-PE301
 
 printf "Creating a vagrant basebox named $BoxName \n"
 
