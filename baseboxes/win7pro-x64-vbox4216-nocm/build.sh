@@ -21,5 +21,9 @@ vboxmanage export "$VMPath" -o $OVFName #--vsys 0 --eula "This is for evaluation
 # Tar and gzip the box
 tar --exclude='*.sh' -cvzf $BoxName ./*
 
+# Remove the artifacts to save space
+rm -f box-disk1.vmdk
+rm -f box.ovf
+
 # Add/update the box
 vagrant box add "$VagrantBoxName" $BoxName --provider virtualbox --force
