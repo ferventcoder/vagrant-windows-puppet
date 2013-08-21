@@ -21,4 +21,12 @@ if (!(Test-Path $ChocoInstallPath)) {
     iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
-cinst chocolatey -pre
+$resourcesPath = 'c:\vagrant\resources'
+$chocoPkgFile = get-childitem $resourcesPath -recurse -include 'chocolatey.*.nupkg' | select -First 1
+
+if (Test-Path "$chocoPkgFile") {
+    cinst chocolatey -pre -force -source "$resourcesPath"
+} else {
+    cinst chocolatey -pre
+
+}
