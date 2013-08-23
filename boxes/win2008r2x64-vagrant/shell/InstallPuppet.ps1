@@ -15,7 +15,7 @@ $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
 #     $ErrorActionPreference = "Continue";
 # }
 
-cinst puppet
+cinst puppet -source 'c:\vagrant\resources'
 
 $PuppetInstallPath = "$env:SystemDrive\Program Files (x86)\Puppet Labs\Puppet\bin"
 if (!(Test-Path $PuppetInstallPath)) {$PuppetInstallPath = "$env:SystemDrive\Program Files\Puppet Labs\Puppet\bin";}
