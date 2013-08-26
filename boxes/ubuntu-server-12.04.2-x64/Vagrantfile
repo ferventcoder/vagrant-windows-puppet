@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
+  #vmware fusion
+  #config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
 
 
   # Provider-specific configuration so you can fine-tune various
@@ -23,6 +25,13 @@ Vagrant.configure("2") do |config|
     v.gui = true
     # Use VBoxManage to customize the VM. For example to change memory:
     #v.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  config.vm.provider :vmware_fusion do |v|
+    # Don't boot with headless mode
+    v.gui = true
+    #v.customize ["modifyvm", :id, "--memory", "1024"]
+    #v.vmw["custom-key"] = "value"
   end
 
   # Create a private network, which allows host-only access to the machine
