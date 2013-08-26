@@ -15,7 +15,14 @@ $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
 #     $ErrorActionPreference = "Continue";
 # }
 
-cinst puppet -source 'c:\vagrant\resources'
+$resourcesPath = 'c:\vagrant\resources'
+$pkgFile = get-childitem $resourcesPath -recurse -include 'puppet.*.nupkg' | select -First 1
+
+if ($pkgFile -ne $null -and Test-Path "$pkgFile") {
+    cinst puppet -source "$resourcesPath"
+} else {
+    cinst puppet
+}
 
 $PuppetInstallPath = "$env:SystemDrive\Program Files (x86)\Puppet Labs\Puppet\bin"
 if (!(Test-Path $PuppetInstallPath)) {$PuppetInstallPath = "$env:SystemDrive\Program Files\Puppet Labs\Puppet\bin";}
