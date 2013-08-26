@@ -1,7 +1,7 @@
 Vagrant Windows Boxes and Puppet
 ============================
   
-To use this, you need `vagrant` 1.1.x and `vagrant-windows` plugin installed. Vagrant-windows has an experimental 1.2 branch which will allow you to take advantage of vagrant 1.2.x and the latest features.  
+To use this, you need `vagrant` 1.2.7+ and `vagrant-windows` 1.2.0+ plugin installed (still fresh and needs to be built from source).
   
 These are the files that end up in your vagrant folder, so you can just clone them prior to doing a vagrant up.  
   
