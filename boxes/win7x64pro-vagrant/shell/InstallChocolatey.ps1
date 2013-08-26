@@ -28,5 +28,4 @@ if ($chocoPkgFile -ne $null -and Test-Path "$chocoPkgFile") {
     cinst chocolatey -pre -force -source "$resourcesPath"
 } else {
     cinst chocolatey -pre
-
 }
