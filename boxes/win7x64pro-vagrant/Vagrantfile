@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://vagrant-windows.s3.amazonaws.com/win7pro-x64-vbox4216-nocm.box"
+  #VMWare version
+  #config.vm.box_url = "http://vagrant-windows.s3.amazonaws.com/win7pro-x64-vmwarefusion5-nocm.box"
 
 
   # Provider-specific configuration so you can fine-tune various
@@ -23,6 +25,13 @@ Vagrant.configure("2") do |config|
     v.gui = true
     # Use VBoxManage to customize the VM. For example to change memory:
     #v.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  config.vm.provider :vmware_fusion do |v|
+    # Don't boot with headless mode
+    v.gui = true
+    #v.customize ["modifyvm", :id, "--memory", "1024"]
+    #v.vmw["custom-key"] = "value"
   end
 
   # Max time to wait for the guest to shutdown
@@ -56,7 +65,6 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "~/code", "/code"
   config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
 
