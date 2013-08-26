@@ -5,7 +5,7 @@ BoxBaseName=${PWD##*/}
 VMName=win7x64pro
 VMPath=~/Documents/Virtual\ Machines.localized/${VMName}.vmwarevm/
 BoxName=${BoxBaseName}.box
-VagrantBoxName=${VMName}-vmware
+VagrantBoxName=${VMName}
 
 printf "Creating a vagrant basebox named $BoxName \n"
 
