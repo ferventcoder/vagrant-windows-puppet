@@ -24,7 +24,7 @@ if (!(Test-Path $ChocoInstallPath)) {
 $resourcesPath = 'c:\vagrant\resources'
 $chocoPkgFile = get-childitem $resourcesPath -recurse -include 'chocolatey.*.nupkg' | select -First 1
 
-if ($chocoPkgFile -ne $null -and Test-Path "$chocoPkgFile") {
+if ($chocoPkgFile -ne $null) {
     cinst chocolatey -pre -force -source "$resourcesPath"
 } else {
     cinst chocolatey -pre
