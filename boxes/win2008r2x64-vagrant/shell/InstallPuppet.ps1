@@ -18,7 +18,7 @@ $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
 $resourcesPath = 'c:\vagrant\resources'
 $pkgFile = get-childitem $resourcesPath -recurse -include 'puppet.*.nupkg' | select -First 1
 
-if ($pkgFile -ne $null -and Test-Path "$pkgFile") {
+if ($pkgFile -ne $null) {
     cinst puppet -source "$resourcesPath"
 } else {
     cinst puppet
