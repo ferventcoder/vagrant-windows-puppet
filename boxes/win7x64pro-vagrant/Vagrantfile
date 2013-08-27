@@ -13,9 +13,9 @@ Vagrant.configure("2") do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://vagrant-windows.s3.amazonaws.com/win7pro-x64-vbox4216-nocm.box"
+  config.vm.box_url = "https://gigafileupload.com/download/09509129971978246.box"
   #VMWare version
-  #config.vm.box_url = "http://vagrant-windows.s3.amazonaws.com/win7pro-x64-vmwarefusion5-nocm.box"
+  #config.vm.box_url = "https://gigafileupload.com/download/008712233711448814.box"
 
 
   # Provider-specific configuration so you can fine-tune various
