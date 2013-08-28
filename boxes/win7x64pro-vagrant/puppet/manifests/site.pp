@@ -14,24 +14,28 @@
 #   source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
 # }
 
-package {'git.install':
-  ensure => latest,
-  provider => 'chocolatey',
-  source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
-}
+# package {'git.install':
+#   ensure => latest,
+#   provider => 'chocolatey',
+#   source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
+# }
 
- package {'poshgit':
-  ensure => latest,
-  provider => 'chocolatey',
-  source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
-}
+#  package {'poshgit':
+#   ensure => latest,
+#   provider => 'chocolatey',
+#   source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
+# }
+
+# # package {'putty':
+# #   ensure => latest,
+# #   provider => 'chocolatey',
+# # }
 
 # package {'putty':
-#   ensure => latest,
+#   ensure => absent,
 #   provider => 'chocolatey',
 # }
 
-package {'putty':
-  ensure => absent,
-  provider => 'chocolatey',
+exec { 'stop-CryptSvc':
+  command => 'C:\Windows\System32\cmd.exe /c "net stop CryptSvc"'
 }
