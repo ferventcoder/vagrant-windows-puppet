@@ -5,7 +5,13 @@ $env:Path += ";$PuppetInstallPath"
 
 $CommonAppDataPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::CommonApplicationData)
 $PuppetAppDataPath = Join-Path $CommonAppDataPath 'PuppetLabs\puppet'
+#win2003 librarian override
+$fso = New-Object -ComObject Scripting.FileSystemObject
+$f = $fso.GetFolder("$PuppetAppDataPath")
+$PuppetAppDataPath = $f.ShortPath
+
 $PuppetEtcPath = Join-Path "$PuppetAppDataPath" 'etc'
+
 
 if (!(Test-Path $PuppetEtcPath)) {
   Write-Host "Creating folder `'$PuppetEtcPath`'"

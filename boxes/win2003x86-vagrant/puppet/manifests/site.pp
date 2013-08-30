@@ -25,3 +25,9 @@ file { 'c:/afterreboot.txt':
   content => 'yep',
   #subscribe => Reboot['reboot_now']
 }
+
+package { 'putty':
+  ensure => installed,
+  provider => 'chocolatey',
+  source => 'c:\vagrant\resources\packages',
+}

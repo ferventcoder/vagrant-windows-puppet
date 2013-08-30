@@ -1,11 +1,11 @@
 # Configuration for librarian-puppet.
-
-forge "http://forge.puppetlabs.com"
-
-mod 'joshcooper/powershell'
-
-mod 'puppetlabs/registry'
-
-mod 'rismoney/chocolatey',
-  :git => 'git://github.com/ferventcoder/puppet-chocolatey.git',
-  :ref => "all_the_things"
+#
+#forge "http://forge.puppetlabs.com"
+#
+#mod 'joshcooper/powershell'
+#
+#mod 'puppetlabs/registry'
+#
+#mod 'rismoney/chocolatey',
+#  :git => 'git://github.com/ferventcoder/puppet-chocolatey.git',
+#  :ref => "all_the_things"
