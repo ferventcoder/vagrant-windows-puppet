@@ -21,6 +21,7 @@ Vagrant Windows Boxes and Puppet
 
 ## Boxes Folder
 
+ 1. Create the `puppet/modules` and `puppet/box_modules` directories in each `boxes` directory that you want to use vagrant in.
  1. In each folder if you are running VirtualBox, you can just `vagrant up`. If you are running VMWare, you will want to edit the vagrant file first for the second provided url (and then `vagrant up --provider=vmware_fusion`).
  1. **Known Issues:** Right now I believe you can only have one windows box up at a time without changing the ports for each. Looking at a way of using the `vagrant-auto_network` plugin to change this up.
   
