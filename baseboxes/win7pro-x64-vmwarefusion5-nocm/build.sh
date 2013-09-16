@@ -26,5 +26,8 @@ pushd "$VMPath"
 tar --exclude='*.log' --exclude='*.plist' --exclude='*.png' --exclude='appListCache/*' --exclude='appListCache' --exclude='screenshotsCache/*' --exclude='screenshotsCache' --exclude="${VMName}.vmx.lck/*" --exclude="${VMName}.vmx.lck" -cvzf "$CurrentDir/$BoxName" ./*
 popd
 
+# calculate md5 hash
+md5 "$BoxName" "${BoxName}.md5"
+
 # Add/update the box
 vagrant box add "$VagrantBoxName" $BoxName --provider vmware_fusion --force

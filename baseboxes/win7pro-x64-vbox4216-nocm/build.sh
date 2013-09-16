@@ -25,5 +25,8 @@ tar --exclude='*.sh' -cvzf $BoxName ./*
 rm -f box-disk1.vmdk
 rm -f box.ovf
 
+# calculate md5 hash
+md5 "$BoxName" "${BoxName}.md5"
+
 # Add/update the box
 vagrant box add "$VagrantBoxName" $BoxName --provider virtualbox --force
