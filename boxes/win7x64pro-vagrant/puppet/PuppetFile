@@ -11,3 +11,5 @@ mod 'rismoney/chocolatey',
   :ref => "all_the_things"
 
 mod 'puppetlabs/dism'
+
+mod 'puppetlabs/reboot'
