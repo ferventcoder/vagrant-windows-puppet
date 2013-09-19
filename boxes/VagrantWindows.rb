@@ -1,4 +1,5 @@
 Vagrant.configure("2") do |config|
+#shared_win_config = lambda do |config|
   # Windows specific configuration done here
   config.vm.provider :virtualbox do |v|
     v.gui = true

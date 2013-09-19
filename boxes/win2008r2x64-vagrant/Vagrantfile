@@ -1,27 +1,10 @@
+# Load upstream windows vagrant file with common settings
+windows_vagrantfile = File.expand_path("../../VagrantWindows.rb", __FILE__)
+load windows_vagrantfile if File.exist?(windows_vagrantfile)
+
 Vagrant.configure("2") do |config|
   config.vm.box = "win2008r2x64"
   config.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
-
-  config.vm.provider :virtualbox do |v|
-    v.gui = true
-  end
-
-  config.vm.provider :vmware_fusion do |v|
-    v.gui = true
-  end
-
-  # Configure base box parameters
-  config.vm.guest = :windows
-
-  # Max time to wait for the guest to shutdown
-  config.windows.halt_timeout = 20
-
-  # Admin user name and password
-  config.winrm.username = "vagrant"
-  config.winrm.password = "vagrant"
-
-  # Port forward WinRM
-  config.vm.network :forwarded_port, guest: 5985, host: 5985
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
