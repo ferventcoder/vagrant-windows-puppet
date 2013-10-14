@@ -28,6 +28,9 @@ Vagrant.configure("2") do |config|
   #config.vm.network :forwarded_port, guest: 3389, host: 3389
   config.vm.network :forwarded_port, guest: 5985, host: 5985
 
+  #from the perspective of the box itself, not the current directory
+  config.vm.synced_folder "../shared", "/vagrantshared"
+
   # config.vm.synced_folder "~", "/home"
   # config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
 

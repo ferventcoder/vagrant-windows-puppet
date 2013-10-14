@@ -15,7 +15,7 @@ $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
 #     $ErrorActionPreference = "Continue";
 # }
 
-$resourcesPath = 'c:\vagrant\resources'
+$resourcesPath = 'c:\vagrantshared\resources'
 $pkgFile = get-childitem $resourcesPath -recurse -include 'puppet.*.nupkg' | select -First 1
 
 if ($pkgFile -ne $null) {

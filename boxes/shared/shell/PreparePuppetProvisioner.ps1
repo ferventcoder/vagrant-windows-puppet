@@ -18,14 +18,14 @@ Push-Location "$PuppetEtcPath"
 Write-Host "Ensuring librarian puppet"
 try {
     $ErrorActionPreference = "Stop";
-    Get-Command librarian-puppet 
+    Get-Command librarian-puppet
     Write-Host "Running librarian-puppet update"
     & librarian-puppet update
 } catch {
     Write-Host "Installing librarian puppet"
     & gem install librarian-puppet --no-ri --no-rdoc
     Write-Host "Running librarian-puppet install --clean"
-    
+
     & librarian-puppet install --clean
 } finally {
     $ErrorActionPreference = "Continue";
