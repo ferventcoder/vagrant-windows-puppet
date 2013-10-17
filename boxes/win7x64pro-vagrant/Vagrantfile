@@ -6,11 +6,14 @@ load windows_vagrantfile if File.exist?(windows_vagrantfile)
 
 Vagrant.configure("2") do |config|
   config.vm.box = "win7x64pro"
-  config.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07NE00OEQyYnoySDg/"
-  #VMWare version
-  #config.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07WW1LamJzakt2MUE/"
 
-  #shared_win_config.call(config)
+  config.vm.provider "vmware_fusion" do |v, override|
+    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07WW1LamJzakt2MUE/"
+  end
+
+  config.vm.provider "virtualbox" do |v, override|
+    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07NE00OEQyYnoySDg/"
+  end
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
