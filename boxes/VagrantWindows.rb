@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
 
   # Port forward WinRM and RDP
   #config.vm.network :forwarded_port, guest: 3389, host: 3389
-  config.vm.network :forwarded_port, guest: 5985, host: 5985
+  #config.vm.network :forwarded_port, guest: 5985, host: 5985
 
   #from the perspective of the box itself, not the current directory
   config.vm.synced_folder "../shared", "/vagrantshared"
