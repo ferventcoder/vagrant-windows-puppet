@@ -27,7 +27,7 @@ tar --exclude='*.log' --exclude='*.plist' --exclude='*.png' --exclude='appListCa
 popd
 
 # calculate md5 hash
-md5 "$BoxName" "${BoxName}.md5"
+md5 "$BoxName" > "${BoxName}.md5"
 
 # Add/update the box
 vagrant box add "$VagrantBoxName" $BoxName --provider vmware_fusion --force
