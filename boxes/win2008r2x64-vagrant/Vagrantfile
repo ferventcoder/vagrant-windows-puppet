@@ -5,11 +5,11 @@ load windows_vagrantfile if File.exist?(windows_vagrantfile)
 Vagrant.configure("2") do |config|
   config.vm.box = "win2008r2x64"
 
-  config.vm.provider "vmware_fusion" do |v, override|
+  config.vm.provider :vmware_fusion do |v, override|
     #override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
   end
 
-  config.vm.provider "virtualbox" do |v, override|
+  config.vm.provider :virtualbox do |v, override|
     override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
   end
 
