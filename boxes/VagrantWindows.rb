@@ -50,4 +50,8 @@ Vagrant.configure("2") do |config|
   #     "osfamily" => "windows",
   #   }
   # end
+  #
+  # net stop puppet
+  # rename puppet puppet.old
+  # mklink "C:\Program Files (x86)\Puppet Labs\Puppet\puppet" c:\code\puppetlabs\puppet
 end
