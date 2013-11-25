@@ -11,12 +11,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |v, override|
     override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
+    override.vm.network :private_network, ip: "192.168.0.2"
   end
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
-  config.vm.network :private_network, ip: "192.168.0.2"
 
   config.vm.network :forwarded_port, guest: 5985, host: 5988
 
