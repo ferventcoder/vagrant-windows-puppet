@@ -38,9 +38,37 @@ node /^win7.*$/ {
     ensure => directory,
   }
 
-  file { 'c:/temp/test.txt':
+  file {'c:/temp/acls/mode_dir/bob-nosource.txt':
+    ensure => file,
+    content => 'dude',
+  }
+
+  file {'c:/temp/acls/mode_dir/bob.txt':
+    ensure => file,
+    content => 'dude-dude',
+  }
+
+  file {'c:/temp/acls/SomeUser':
+    ensure  => directory,
+    owner   => 'Administrator',
+    group   => 'Administrator',
+    mode    => '0775',
+  }
+
+  file {'c:/temp/acls/SomeUser/SomeFile.txt':
+    ensure => file,
+    content => 'yes',
+  }
+
+  file {'c:/temp/acls/mode_dir/bob-sourced.txt':
     ensure => file,
     source_permissions => ignore,
+    source => "puppet:///modules/permissionstest/test.txt",
+  }
+
+  file { 'c:/temp/test.txt':
+    ensure => file,
+    group => 'SYSTEM',
     source => "puppet:///modules/permissionstest/test.txt",
   }
 
@@ -60,7 +88,6 @@ node /^win7.*$/ {
     mode => 0640,
     owner => 'Administrators',
     group => 'SYSTEM',
-    source_permissions => ignore,
     source => "puppet:///modules/permissionstest/test-setmode.txt",
   }
 }
