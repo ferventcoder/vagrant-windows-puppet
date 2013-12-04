@@ -5,7 +5,7 @@ load windows_vagrantfile if File.exist?(windows_vagrantfile)
 Vagrant.configure("2") do |config|
   config.vm.box = "win2003x86"
 
-  config.vm.provider "vmware_fusion" do |v, override|
+  config.vm.provider :vmware_fusion do |v, override|
     #override.vm.box_url = "nowhere"
   end
 

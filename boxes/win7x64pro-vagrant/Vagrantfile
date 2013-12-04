@@ -2,13 +2,11 @@
 windows_vagrantfile = File.expand_path("../../VagrantWindows.rb", __FILE__)
 load windows_vagrantfile if File.exist?(windows_vagrantfile)
 
-#require File.expand_path('../../VagrantWindows.rb', __FILE__)
-
 Vagrant.configure("2") do |config|
   config.vm.box = "win7x64pro"
 
-  config.vm.provider "vmware_fusion" do |v, override|
-    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07WW1LamJzakt2MUE/"
+  config.vm.provider :vmware_fusion do |v, override|
+    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07dnlaNUp4aGdmOW8/"
   end
 
   config.vm.provider :virtualbox do |v, override|
