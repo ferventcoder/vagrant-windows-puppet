@@ -41,6 +41,10 @@
 
 #,'PowerGuiVSX'
 
+package {'disableuac':
+  ensure => latest,
+  provider => chocolatey,
+} ->
 package {['SublimeText2.app'
     ,'notepadplusplus'
     ,'fiddler'
@@ -59,6 +63,12 @@ package {['SublimeText2.app'
 }
 
 package {'powershell4':
+  ensure => latest,
+  provider => chocolatey,
+  notify => Package['vagrant-winrm-config'],
+}
+
+package {'vagrant-winrm-config':
   ensure => latest,
   provider => chocolatey,
 }
