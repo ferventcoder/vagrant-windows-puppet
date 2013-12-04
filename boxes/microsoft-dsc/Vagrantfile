@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
 
   # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
   config.vm.provision :shell, :path => "../shared/shell/main.cmd"
-  # This shell provisioner installs microsoft DSC
-  #config.vm.provision :shell, :path => "shell/main.cmd"
+  # This shell provisioner installs microsoft DSC (well preps for it anyway)
+  config.vm.provision :shell, :path => "shell/DSC.install.cmd"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.

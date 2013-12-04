@@ -59,7 +59,6 @@ package {['SublimeText2.app'
     ]:
   ensure => latest,
   provider => chocolatey,
-  notify => Package['powershell4'],
 }
 
 package {'powershell4':
