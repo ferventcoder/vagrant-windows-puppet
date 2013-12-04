@@ -1,8 +1,8 @@
-::echo 'Ensuring .NET 4.0 is installed'
-::@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallNet4.ps1"
+echo 'Ensuring .NET 4.0 is installed'
+@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallNet4.ps1"
 
-::echo 'Ensuring Chocolatey is Installed'
-::@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallChocolatey.ps1"
+echo 'Ensuring Chocolatey is Installed'
+@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallChocolatey.ps1"
 
 echo 'Checking if puppet server has been added to hosts file'
 call ping puppet
