@@ -1,0 +1,10 @@
+# Configuration for librarian-puppet.
+forge "http://forge.puppetlabs.com"
+
+mod 'joshcooper/powershell'
+
+#mod 'puppetlabs/registry'
+
+mod 'rismoney/chocolatey',
+  :git => 'git://github.com/chocolatey/puppet-chocolatey.git',
+  :ref => "master"

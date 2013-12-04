@@ -1,0 +1,40 @@
+# Load upstream windows vagrant file with common settings
+windows_vagrantfile = File.expand_path("../../VagrantWindows.rb", __FILE__)
+load windows_vagrantfile if File.exist?(windows_vagrantfile)
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "win2008r2x64"
+
+  config.vm.provider :vmware_fusion do |v, override|
+    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07NmxkdmNma0xYb00/"
+  end
+
+  config.vm.provider :virtualbox do |v, override|
+    override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
+    override.vm.network :private_network, ip: "192.168.0.2"
+  end
+
+  config.vm.network :forwarded_port, guest: 5985, host: 5999
+
+  config.vm.synced_folder "~", "/home"
+  config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
+
+  # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
+  config.vm.provision :shell, :path => "../shared/shell/main.cmd"
+  # This shell provisioner installs microsoft DSC
+  #config.vm.provision :shell, :path => "shell/main.cmd"
+
+  # Enable provisioning with Puppet stand alone.  Puppet manifests
+  # are contained in a directory path relative to this Vagrantfile.
+  config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file  = "site.pp"
+    puppet.module_path = "puppet/modules"
+    puppet.facter = {
+      "domain" => "local",
+      "kernel" => "windows",
+      "operatingsystem" => "windows",
+      "osfamily" => "windows",
+    }
+  end
+end
