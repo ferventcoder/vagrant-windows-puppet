@@ -34,4 +34,4 @@ echo 'Install Required libraries for puppet if missing'
 @powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\PreparePuppetProvisioner.ps1"
 
 ::puppet resource
-call puppet agent --test --debug --verbose
+::call puppet agent --test --debug --verbose
