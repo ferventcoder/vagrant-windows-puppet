@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
   config.vm.guest = :windows
 
   # Port forward WinRM and RDP
+  config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
   #config.vm.network :forwarded_port, guest: 3389, host: 3389
   #config.vm.network :forwarded_port, guest: 5985, host: 5985
 
