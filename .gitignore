@@ -3,6 +3,7 @@ resources
 *.box
 *.vmdk
 *.ovf
+.DS_Store
 
 boxes/transient
 box_modules
