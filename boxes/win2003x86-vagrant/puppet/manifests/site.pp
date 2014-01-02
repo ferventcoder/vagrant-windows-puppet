@@ -1,33 +1,19 @@
-file { 'c:/before.txt':
-  content   => 'one',
-  before    => File['c:/after.txt']
+Package {
+  provider => chocolatey,
 }
 
-reboot { 'reboot_now':
-  message => "Rebooting yo",
-  timeout => 2,
-
+package {'ruby':
+  ensure => '1.9.3.48400',
+} ->
+package {'ruby.devkit':
+  ensure => latest,
+} ->
+package {'bundler':
+  ensure => latest,
+  provider => gem,
+} ->
+package {'debugger':
+  ensure => '1.6.2',
+  provider => gem,
 }
-
-reboot { 'reboot_pending':
-  message => "Rebooting pending",
-  when => pending,
-  timeout => 2,
-
-}
-
-file { 'c:/after.txt':
-  content   => 'two',
-  notify => Reboot['reboot_now']
-}
-
-file { 'c:/afterreboot.txt':
-  content => 'yep',
-  #subscribe => Reboot['reboot_now']
-}
-
-package { 'putty':
-  ensure => installed,
-  provider => 'chocolatey',
-  source => 'c:\vagrant\resources\packages',
-}
+# must build debugger separate since it requires devkit
