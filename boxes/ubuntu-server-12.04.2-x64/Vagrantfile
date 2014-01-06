@@ -1,18 +1,21 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntuserver1204-2-x64"
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
-  #vmware fusion
-  #config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
+  config.vm.box = "ubuntu-server-12042-x64-vbox4210-nocm"
 
-  config.vm.provider :virtualbox do |v|
-    v.gui = true
+  config.vm.provider :virtualbox do |v, override|
+    v.gui = false
+    override.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
   end
 
-  config.vm.provider :vmware_fusion do |v|
-    v.gui = true
+  config.vm.provider :vmware_fusion do |v, override|
+    v.gui = false
+    override.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   end
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.provision :shell, :path => "shell/PuppetInstall.sh"
+
+  # replace puppet installed with puppet dev:
+  # sudo service puppetmaster stop
+  # mv /usr/lib/ruby/site_ruby/1.8/puppet/ /usr/lib/ruby/site_ruby/1.8/puppet.old/
+  # ln -s /code/puppetlabs/puppet/lib/puppet/ /usr/lib/ruby/site_ruby/1.8/puppet
+  # sudo service puppetmaster start
 end
