@@ -1,0 +1,9 @@
+# Configuration for librarian-puppet.
+
+forge "http://forge.puppetlabs.com"
+
+mod 'joshcooper/powershell'
+
+mod 'puppetlabs/registry'
+
+mod 'rismoney/chocolatey',
