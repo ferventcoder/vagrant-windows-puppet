@@ -21,8 +21,8 @@ Vagrant Windows Boxes and Puppet
 ## Boxes Folder
 
  1. Create the `puppet/modules` and `puppet/box_modules` directories in each `boxes` directory that you want to use vagrant in (if it doesn't already exist).
- 1. In each folder if you are running VirtualBox, you can just `vagrant up`. If you are running VMWare, you will want to edit the vagrant file first for the second provided url (and then `vagrant up --provider=vmware_fusion`).
- 1. **Known Issues:** Right now I believe you can only have one windows box up at a time without changing the ports for each. Looking at a way of using the `vagrant-auto_network` plugin to change this up.
+ 1. In each folder if you are running VirtualBox, you can just `vagrant up`. If you are running VMWare, you will want to `vagrant up --provider=vmware_fusion`.
+
 
 ### License Requirements for Windows
 The boxes provided in the url explicitly state that they need a license for valid use. After downloading the base box you should provide a license.
@@ -39,4 +39,6 @@ What I would recommend to have installed are the following:
  * [BitVise SSH Server](http://www.bitvise.com/ssh-server) - configured with vagrant public key
     * This has the best SSHD and works well with PowerShell REPL
     * Import the vagrant insecure public key for the vagrant user.
-    * this allows you to still use `vagrant ssh`
+    * This allows you to still use `vagrant ssh`
+    * Ensure that Public Key authentication for this user is Allowed
+  * WinRM and other items configured as noted at [Vagrant-Windows](https://github.com/WinRb/vagrant-windows#creating-a-base-box)
