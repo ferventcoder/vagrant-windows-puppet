@@ -22,7 +22,7 @@ w32tm /resync
 
 echo 'Install puppet if missing'
 ::@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallPuppet.ps1"
-start /wait msiexec /qn /i http://downloads.puppetlabs.com/windows/puppet-3.3.2.msi
+start /wait msiexec /qn /i http://downloads.puppetlabs.com/windows/puppet-3.4.2.msi
 
 SET PATH=%PATH%;%SystemDrive%\Program Files (x86)\Puppet Labs\Puppet\bin;%SystemDrive%\Program Files\Puppet Labs\Puppet\bin;
 
