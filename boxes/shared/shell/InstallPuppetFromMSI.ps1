@@ -1,5 +1,5 @@
-$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.2.4.msi"
-$PuppetVersion = "3.3.2"
+$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.4.2.msi"
+$PuppetVersion = "3.4.2"
 
 
 if ($PuppetVersion -ne $null) {
