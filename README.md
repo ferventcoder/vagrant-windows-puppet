@@ -6,7 +6,7 @@ Vagrant Windows Boxes and Puppet
  * [Vagrant 1.3.5+](http://downloads.vagrantup.com/tags/v1.3.5) - I'm pretty sure you'll need the latest version
  * [VirtualBox 4.2.16](https://www.virtualbox.org/wiki/Downloads) or VMWare Fusion 5
     * If you want to use VMWare Fusion you will also need the vagrant-vmware-fusion plugin for vagrant (which is not free). You also want the latest version (at least 2.1.0). If you already have this installed, you can upgrade simply by calling `vagrant plugin install vagrant-vmware-fusion`.
- * Vagrant-Windows 1.2.3 - `vagrant plugin install vagrant-windows --plugin-version 1.2.3` - [1.3.0 has issues with Puppet](https://github.com/WinRb/vagrant-windows/issues/135) and [1.3.1 has changed default shell provisioner to powershell instead of command.](https://github.com/WinRb/vagrant-windows/issues/145)
+ * Vagrant-Windows 1.3.2 - `vagrant plugin install vagrant-windows --plugin-version 1.3.2`.
  * At least 20GB free on the host box.
  * **NOTE:** If you file any issues on this repository, please note that I'll ask if you what you have installed and what versions. If it doesn't match the above, I will close your issue until you can reproduce it with the above installed.
 
