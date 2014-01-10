@@ -1,6 +1,4 @@
 Vagrant.configure("2") do |config|
-#shared_win_config = lambda do |config|
-  # Windows specific configuration done here
   config.vm.provider :virtualbox do |v|
     v.gui = true
   end
@@ -9,19 +7,9 @@ Vagrant.configure("2") do |config|
     v.gui = true
   end
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
-
-
-  # Max time to wait for the guest to shutdown
   config.windows.halt_timeout = 20
-
-  # Admin user name and password
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
-
-  # Configure base box parameters
   config.vm.guest = :windows
 
   # Port forward WinRM and RDP
