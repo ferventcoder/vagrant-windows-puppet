@@ -20,6 +20,10 @@ echo 'Ensuring Time Service is on'
 net start w32time
 w32tm /resync
 
+echo 'Ensuring TCP/IP NetBIOS Helper Service (lmhosts) is on'
+sc config lmhosts start= auto
+net start lmhosts
+
 echo 'Install puppet if missing'
 @powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallPuppetFromMSI.ps1"
 
