@@ -1,12 +1,12 @@
-#  package {'poshgit':
-#   ensure => latest,
-#   provider => 'chocolatey',
-#   source => 'c:\vagrant\resources\packages;http://chocolatey.org/api/v2/',
-# }
+# NOTE: You may need to go into the puppet/modules directory
+#  and call this:
+#    git clone https://github.com/openstack-hyper-v/puppet-jenkins.git jenkins
+#    git clone https://github.com/openstack-hyper-v/puppet-windows_common.git windows_common
 
-$slave_home = "c:/Bob/jenkins-slave2"
+#$slave_home = "${::systemdrive}\\jenkins-slave"
+$slave_home = "c:\\jenkins-slave"
 
-file { ["c:/Bob",$slave_home]:
+file { $slave_home :
   ensure => directory,
 }
 
@@ -19,6 +19,14 @@ file { ["c:/Bob",$slave_home]:
 #   backup => false,
 # }
 
+# ReplaceFileW results in no go
+file { "${slave_home}\\jenkins-slave.xml":
+  ensure => file,
+  content => template('jenkins/jenkins-slave.xml.erb'),
+  require => File[ $slave_home ],
+  backup => false,
+}
+
 # works?
 # file { "c:\\Bob\\jenkinsslave\\jenkins-slave.xml":
 #   ensure => file,
@@ -26,14 +34,6 @@ file { ["c:/Bob",$slave_home]:
 #   require => File[ $slave_home ],
 #   backup => false,
 # }
-
-# ReplaceFileW results in no go
-file { "${slave_home}/jenkins-slave.xml":
-  ensure => file,
-  content => template('jenkins/jenkins-slave.xml.erb'),
-  require => File[ $slave_home ],
-  backup => false,
-}
 
 # works
 # file { "${slave_home}/jenkins-slavexml":
@@ -59,9 +59,9 @@ file { "${slave_home}/jenkins-slave.xml":
 #   backup => false,
 # }
 
-# file { "${slave_home}/jenkins.slave.exe.config":
-#   ensure => file,
-#   content => template('jenkins/jenkins.slave.exe.config.erb'),
-#   require => File[$slave_home],
-#   backup => false,
-# }
+file { "${slave_home}\\jenkins-slave.exe.config":
+  ensure => file,
+  content => template('jenkins/jenkins-slave.exe.config.erb'),
+  require => File[$slave_home],
+  backup => false,
+}
