@@ -22,37 +22,29 @@ file { "${slave_home}\\jenkins-slave.xml":
   backup => false,
 }
 
-# works?
-# file { "c:\\Bob\\jenkinsslave\\jenkins-slave.xml":
-#   ensure => file,
-#   content => template('pup1389/jenkins-slave.xml.erb'),
-#   require => File[ $slave_home ],
-#   backup => false,
-# }
+# works
+file { "${slave_home}/jenkins-slavexml":
+  ensure => file,
+  content => template('pup1389/jenkins-slave.xml.erb'),
+  require => File[ $slave_home ],
+  backup => false,
+}
 
 # works
-# file { "${slave_home}/jenkins-slavexml":
-#   ensure => file,
-#   content => template('pup1389/jenkins-slave.xml.erb'),
-#   require => File[ $slave_home ],
-#   backup => false,
-# }
+file { "${slave_home}/jenkinsslave.xml":
+  ensure => file,
+  content => template('pup1389/jenkins-slave.xml.erb'),
+  require => File[ $slave_home ],
+  backup => false,
+}
 
 # works
-# file { "${slave_home}/jenkinsslave.xml":
-#   ensure => file,
-#   content => template('pup1389/jenkinsslave.xml.erb'),
-#   require => File[ $slave_home ],
-#   backup => false,
-# }
-
-# works
-# file { "${slave_home}/jenkins_slave.xml":
-#   ensure => file,
-#   content => template('pup1389/jenkins_slave.xml.erb'),
-#   require => File[ $slave_home ],
-#   backup => false,
-# }
+file { "${slave_home}/jenkins_slave.xml":
+  ensure => file,
+  content => template('pup1389/jenkins-slave.xml.erb'),
+  require => File[ $slave_home ],
+  backup => false,
+}
 
 file { "${slave_home}\\jenkins-slave.exe.config":
   ensure => file,
