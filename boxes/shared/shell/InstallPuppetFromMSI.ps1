@@ -1,11 +1,5 @@
 $MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.4.2.msi"
-$PuppetVersion = "3.4.2"
 
-
-if ($PuppetVersion -ne $null) {
-  $MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-$($PuppetVersion).msi"
-  Write-Host "Version specified, so updated MsiUrl to `"$MsiUrl`""
-}
 
 $PuppetInstalled = $false
 try {

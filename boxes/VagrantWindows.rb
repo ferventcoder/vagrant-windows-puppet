@@ -1,3 +1,7 @@
+unless Vagrant.has_plugin?("vagrant-windows")
+  raise 'vagrant-windows is not installed!'
+end
+
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
     v.gui = true
