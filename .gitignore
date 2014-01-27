@@ -4,6 +4,7 @@ resources
 *.vmdk
 *.ovf
 .DS_Store
+.pe_build
 
 boxes/transient
 box_modules
