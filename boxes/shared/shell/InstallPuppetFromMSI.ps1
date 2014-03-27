@@ -1,5 +1,4 @@
-$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.4.2.msi"
-
+$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.4.3.msi"
 
 $PuppetInstalled = $false
 try {
