@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "shell/PrepareBox.sh"
 
   if install_pe
-    #PE install
+    #PE install - http://docs.puppetlabs.com/pe/latest/install_basic.html
     config.pe_build.version = '3.2.1'
     # if you don't have $PE_DOWNLOAD_ROOT defined,
     # you will want to comment this line out and
