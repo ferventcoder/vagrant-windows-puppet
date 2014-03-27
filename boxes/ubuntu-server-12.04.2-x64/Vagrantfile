@@ -22,7 +22,11 @@ Vagrant.configure("2") do |config|
 
   if install_pe
     #PE install
-    config.pe_build.version = '3.1.0'
+    config.pe_build.version = '3.2.1'
+    # if you don't have $PE_DOWNLOAD_ROOT defined,
+    # you will want to comment this line out and
+    # move to an older version of PE
+    config.pe_build.download_root = "#{ENV['PE_DOWNLOAD_ROOT']}/:version"
     config.vm.provision :pe_bootstrap do |provisioner|
       provisioner.role = :master
       provisioner.verbose = true
