@@ -1,20 +1,7 @@
 #Puppet Install
 # http://docs.puppetlabs.com/guides/installation.html#debian-and-ubuntu
 
-# ensure the date/time is synced
-sudo ntpdate us.pool.ntp.org
-
-# shut down firewall permanently
-sudo iptables-save
-sudo ufw disable
-sudo ufw status
-
-# Set the hostname to puppet
-# sudo vim /etc/sysconfig/network
-# sudo vim /etc/hosts (must add puppet to 127.0.0.1)
-sudo hostname puppet
-sudo service networking stop
-sudo service networking start
+# some prep done in PrepareBox.sh
 
 # Add the Deb
 # http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html#for-debian-and-ubuntu

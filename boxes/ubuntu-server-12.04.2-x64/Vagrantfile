@@ -1,4 +1,4 @@
-install_pe = false
+install_pe = true
 
 if install_pe
   unless Vagrant.has_plugin?("vagrant-pe_build")
@@ -19,6 +19,8 @@ Vagrant.configure("2") do |config|
     v.gui = false
     override.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   end
+
+  config.vm.provision :shell, :path => "shell/PrepareBox.sh"
 
   if install_pe
     #PE install
