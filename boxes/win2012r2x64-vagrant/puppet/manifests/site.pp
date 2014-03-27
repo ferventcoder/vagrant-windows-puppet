@@ -4,11 +4,11 @@
 #    git clone https://github.com/openstack-hyper-v/puppet-windows_common.git windows_common
 
 #$slave_home = "${::systemdrive}\\jenkins-slave"
-$slave_home = "c:\\jenkins-slave"
+# $slave_home = "c:\\jenkins-slave"
 
-file { $slave_home :
-  ensure => directory,
-}
+# file { $slave_home :
+#   ensure => directory,
+# }
 
 # file { "${slave_home}/jenkins-slave.exe":
 #   ensure => file,
@@ -20,12 +20,12 @@ file { $slave_home :
 # }
 
 # ReplaceFileW results in no go
-file { "${slave_home}\\jenkins-slave.xml":
-  ensure => file,
-  content => template('jenkins/jenkins-slave.xml.erb'),
-  require => File[ $slave_home ],
-  backup => false,
-}
+# file { "${slave_home}\\jenkins-slave.xml":
+#   ensure => file,
+#   content => template('jenkins/jenkins-slave.xml.erb'),
+#   require => File[ $slave_home ],
+#   backup => false,
+# }
 
 # works?
 # file { "c:\\Bob\\jenkinsslave\\jenkins-slave.xml":
@@ -59,9 +59,9 @@ file { "${slave_home}\\jenkins-slave.xml":
 #   backup => false,
 # }
 
-file { "${slave_home}\\jenkins-slave.exe.config":
-  ensure => file,
-  content => template('jenkins/jenkins-slave.exe.config.erb'),
-  require => File[$slave_home],
-  backup => false,
-}
+# file { "${slave_home}\\jenkins-slave.exe.config":
+#   ensure => file,
+#   content => template('jenkins/jenkins-slave.exe.config.erb'),
+#   require => File[$slave_home],
+#   backup => false,
+# }
