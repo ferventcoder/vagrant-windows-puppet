@@ -6,11 +6,11 @@ Vagrant.configure("2") do |config|
   config.vm.box = "win2012r2x64"
 
   config.vm.provider :vmware_fusion do |v, override|
-    #override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07NmxkdmNma0xYb00/"
+    #override.vm.box_url = ENTER A URL TO A VALID VMWARE FUSION BASE BOX OF win2012r2
   end
 
   config.vm.provider :virtualbox do |v, override|
-    #override.vm.box_url = "https://googledrive.com/host/0B6J6sk4wHy07cVB5SE5CWVFPZzg/"
+    #override.vm.box_url = ENTER A URL TO A VALID VIRTUALBOX BASE BOX OF win2012r2
     override.vm.network :private_network, ip: "192.168.0.12"
   end
 
