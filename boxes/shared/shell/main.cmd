@@ -10,13 +10,13 @@ if %errorlevel% neq 0 goto addpuppethost
 goto continue
 
 :addpuppethost
-:: Centos 6.4
-::echo 'Adding puppet (192.168.0.6) to hosts file. This is the same private IP that the centos-6.4-x64 box uses.'
-::echo 192.168.0.6 puppet >> %SystemDrive%\Windows\System32\Drivers\etc\hosts
+:: Centos 6.5
+echo 'Adding puppet (192.168.0.6) to hosts file. This is the same private IP that the centos-6.4-x64 box uses.'
+echo 192.168.0.6 puppet >> %SystemDrive%\Windows\System32\Drivers\etc\hosts
 
 :: Ubuntu 12.04
-echo 'Adding puppet (192.168.0.4) to hosts file. This is the same private IP that the centos-6.4-x64 box uses.'
-echo 192.168.0.4 puppet >> %SystemDrive%\Windows\System32\Drivers\etc\hosts
+::echo 'Adding puppet (192.168.0.4) to hosts file. This is the same private IP that the centos-6.4-x64 box uses.'
+::echo 192.168.0.4 puppet >> %SystemDrive%\Windows\System32\Drivers\etc\hosts
 
 goto continue
 

@@ -1,5 +1,7 @@
-#$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.4.3.msi"
-$MsiUrl = "c:\vagrantshared\resources\packages\installers\puppet-3.6.0-rc1.msi"
+$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.6.0.msi"
+$PuppetInstallerPath = 'c:\vagrantshared\resources\installers'
+$PuppetInstallerFile = 'puppet.msi'
+$PuppetInstaller = Join-Path $PuppetInstallerPath $PuppetInstallerFile
 
 $PuppetInstalled = $false
 try {
@@ -20,19 +22,25 @@ if (!($PuppetInstalled)) {
     Exit 1
   }
 
+  if (!(Test-Path $PuppetInstallerPath)) {
+    Write-Host "Creating folder `'$PuppetInstallerPath`'"
+    $null = New-Item -Path "$PuppetInstallerPath" -ItemType Directory
+  }
+
+  if (!(Test-Path $PuppetInstaller)) {
+    Write-Host "Downloading `'$MsiUrl`' to `'$PuppetInstaller`'"
+    (New-Object Net.WebClient).DownloadFile("$MsiUrl","$PuppetInstaller")
+  }
+
+
   # Install it - msiexec will download from the url
-  $install_args = @("/qn", "/norestart","/i", $MsiUrl)
+  $install_args = @("/qn", "/norestart","/i", "$PuppetInstaller")
   Write-Host "Installing Puppet. Running msiexec.exe $install_args"
   $process = Start-Process -FilePath msiexec.exe -ArgumentList $install_args -Wait -PassThru
   if ($process.ExitCode -ne 0) {
     Write-Host "Installer failed."
     Exit 1
   }
-
-  # Stop the service that it autostarts
-  Write-Host "Stopping Puppet service that is running by default..."
-  Start-Sleep -s 5
-  Stop-Service -Name puppet
 
   Write-Host "Puppet successfully installed."
 }
