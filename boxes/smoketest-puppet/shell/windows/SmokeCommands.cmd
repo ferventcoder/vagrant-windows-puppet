@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 SET PATH=%PATH%;%SystemDrive%\Program Files (x86)\Puppet Labs\Puppet\bin;%SystemDrive%\Program Files\Puppet Labs\Puppet\bin;
 
