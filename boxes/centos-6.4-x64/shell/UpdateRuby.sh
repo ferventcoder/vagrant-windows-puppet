@@ -30,6 +30,6 @@ sudo yum check-update -y
 # sudo gem update --system
 
 #Charlie's method (a slightly weird SCL)
-cd /etc/yum.repos.d && curl -O http://people.redhat.com/bkabrda/scl_ruby193.repo
+cd /etc/yum.repos.d && sudo curl -O http://people.redhat.com/bkabrda/scl_ruby193.repo
 sudo yum install -y ruby193
 #scl enable ruby193 "puppet resource package"

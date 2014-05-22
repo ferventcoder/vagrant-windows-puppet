@@ -1,5 +1,8 @@
 node default {
-
+  file { '/home/vagrant/dude.txt':
+    content => 'yes yes`',
+    mode => 0777,
+  }
 }
 
 node /^win2003.*$/ {
