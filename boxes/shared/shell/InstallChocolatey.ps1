@@ -21,6 +21,7 @@ if (!(Test-Path $ChocoInstallPath)) {
   iex ((new-object net.webclient).DownloadString('http://chocolatey.org/install.ps1'))
 }
 
+choco install chocolatey -pre
 # $resourcesPath = 'c:\vagrantshared\resources'
 # $chocoPkgFile = get-childitem $resourcesPath -recurse -include 'chocolatey.*.nupkg' | select -First 1
 
