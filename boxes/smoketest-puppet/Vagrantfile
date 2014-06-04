@@ -47,23 +47,23 @@ Vagrant.configure("2") do |config|
   #   ubuntu.vm.provision :shell, :inline => 'echo "192.168.0.6  puppet" >> /etc/hosts'
   # end
 
-  config.vm.define "win2003" do |win2003|
+  config.vm.define "win2012" do |win2012|
     # Every Vagrant virtual environment requires a box to build off of.
-    win2003.vm.box = "win2003x86"
+    win2012.vm.box = "win2012r2x64"
    # Max time to wait for the guest to shutdown
-    win2003.windows.halt_timeout = 20
+    win2012.windows.halt_timeout = 20
     # Admin user name and password
-    win2003.winrm.username = "vagrant"
-    win2003.winrm.password = "vagrant"
+    win2012.winrm.username = "vagrant"
+    win2012.winrm.password = "vagrant"
     # Configure base box parameters
-    win2003.vm.guest = :windows
+    win2012.vm.guest = :windows
     # Port forward WinRM and RDP
-    win2003.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    win2012.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    win2003.vm.synced_folder "../shared", "/vagrantshared"
+    win2012.vm.synced_folder "../shared", "/vagrantshared"
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
-    win2003.vm.provider :virtualbox do |v, override|
+    win2012.vm.provider :virtualbox do |v, override|
       override.vm.network :private_network, ip: "192.168.0.12"
       # Don't boot with headless mode
       v.gui = true
@@ -74,8 +74,8 @@ Vagrant.configure("2") do |config|
     end
 
     # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-    win2003.vm.provision :shell, :path => "../shared/shell/main.cmd"
-    win2003.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
+    win2012.vm.provision :shell, :path => "../shared/shell/main.cmd"
+    win2012.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
   end
 
   config.vm.define "win2008" do |win2008|
@@ -109,23 +109,23 @@ Vagrant.configure("2") do |config|
     win2008.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
   end
 
-  config.vm.define "win2012" do |win2012|
+  config.vm.define "win2003" do |win2003|
     # Every Vagrant virtual environment requires a box to build off of.
-    win2012.vm.box = "win2012r2x64"
+    win2003.vm.box = "win2003x86"
    # Max time to wait for the guest to shutdown
-    win2012.windows.halt_timeout = 20
+    win2003.windows.halt_timeout = 20
     # Admin user name and password
-    win2012.winrm.username = "vagrant"
-    win2012.winrm.password = "vagrant"
+    win2003.winrm.username = "vagrant"
+    win2003.winrm.password = "vagrant"
     # Configure base box parameters
-    win2012.vm.guest = :windows
+    win2003.vm.guest = :windows
     # Port forward WinRM and RDP
-    win2012.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    win2003.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
-    win2012.vm.synced_folder "../shared", "/vagrantshared"
+    win2003.vm.synced_folder "../shared", "/vagrantshared"
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
-    win2012.vm.provider :virtualbox do |v, override|
+    win2003.vm.provider :virtualbox do |v, override|
       override.vm.network :private_network, ip: "192.168.0.12"
       # Don't boot with headless mode
       v.gui = true
@@ -136,7 +136,7 @@ Vagrant.configure("2") do |config|
     end
 
     # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-    win2012.vm.provision :shell, :path => "../shared/shell/main.cmd"
-    win2012.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
+    win2003.vm.provision :shell, :path => "../shared/shell/main.cmd"
+    win2003.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
   end
 end
