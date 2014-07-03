@@ -14,6 +14,9 @@ Vagrant.configure("2") do |config|
       v.gui = true
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", "1024"]
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
     end
 
     win2012.vm.provision :shell, :path => "shell/InstallNet4.ps1"
@@ -33,6 +36,9 @@ Vagrant.configure("2") do |config|
       override.vm.network :private_network, ip: "192.168.0.8"
       v.gui = true
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
     end
 
     win2008.vm.provision :shell, :path => "shell/InstallNet4.ps1"
@@ -52,6 +58,9 @@ Vagrant.configure("2") do |config|
       override.vm.network :private_network, ip: "192.168.0.3"
       v.gui = true
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
     end
 
     win2003.vm.provision :shell, :path => "shell/InstallNet4.ps1"

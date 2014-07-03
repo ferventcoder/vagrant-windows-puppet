@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
     #v.customize ["modifyvm", :id, "--memory", "1024"]
     #v.customize ["modifyvm", :id, "--cpus", "2"]
     #v.customize ["modifyvm", :id, "--vram", 32]
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--audio", "none"]
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     v.customize ["modifyvm", :id, "--usb", "off"]
