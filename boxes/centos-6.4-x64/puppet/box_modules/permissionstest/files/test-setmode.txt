@@ -1,2 +1,0 @@
-This is a test file for permissions.
-This has mode set on it.
