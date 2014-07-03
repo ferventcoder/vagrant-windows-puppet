@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v, override|
     #override.vm.box_url = ENTER A URL TO A VALID VIRTUALBOX BASE BOX OF win2012r2
     override.vm.network :private_network, ip: "192.168.0.12"
+    override.vm.network :private_network, ip: "192.168.33.12"
   end
 
   config.vm.synced_folder "~", "/home"
