@@ -2,10 +2,11 @@ $env:PATH +=";$env:SystemDrive\Chocolatey\bin"
 
 write-host "This should be run from the root of your puppet code base"
 
-choco install ruby -version 1.9.3.48400
+choco install ruby -version 1.9.3.54500
 $env:PATH += ";$env:SystemDrive\ruby193\bin"
 choco install ruby.devkit
 &gem install bundler
+&bundler config --global jobs 4
 &gem install debug_inspector -v '0.0.2'
 #&gem install debugger-ruby_core_source -v '1.2.3'
 &gem install debugger
