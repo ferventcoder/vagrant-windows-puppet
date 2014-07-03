@@ -10,6 +10,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu-server-12042-x64-nocm"
 
   config.vm.provider :virtualbox do |v, override|
+    # when running as a master you might want to bump the memory to at
+    # least 1GB 2GB would be even better
+    v.customize ["modifyvm", :id, "--memory", "1024"]
+    #v.customize ["modifyvm", :id, "--cpus", "2"]
     v.gui = false
     override.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
     override.vm.network :private_network, ip: "192.168.0.4"
