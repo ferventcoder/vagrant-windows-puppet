@@ -5,10 +5,21 @@ end
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
     v.gui = true
+    #v.customize ["modifyvm", :id, "--memory", "1024"]
+    #v.customize ["modifyvm", :id, "--cpus", "2"]
+    #v.customize ["modifyvm", :id, "--vram", 32]
+    v.customize ["modifyvm", :id, "--audio", "none"]
+    v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    v.customize ["modifyvm", :id, "--usb", "off"]
   end
 
   config.vm.provider :vmware_fusion do |v|
     v.gui = true
+    #v.vmx["memsize"] = "1024"
+    #v.vmx["numvcpus"] = "2"
+    v.vmx["usb.present"] = "false"
+    v.vmx["sound.present"] = "false"
+    v.vmx["ide1:0.present"] = "false"
   end
 
   config.windows.halt_timeout = 20
