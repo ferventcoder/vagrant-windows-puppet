@@ -13,4 +13,6 @@ choco install ruby.devkit
 &gem install --no-ri --no-rdoc debugger -v '1.6.2'
 &bundle install
 
+# ensure the directory
+New-Item -Path "$env:ProgramData\PuppetLabs\puppet" -ItemType directory | Out-Null
 &bundle exec puppet apply -e "user {'Administrator': ensure=>present, groups=>['Administrators'],}"
