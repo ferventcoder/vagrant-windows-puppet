@@ -1,4 +1,8 @@
-$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.6.2.msi"
+$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.70.msi"
+if ([System.IntPtr]::Size -eq 8) {
+  Write-Host "Going to Puppet 64-bit."
+  $MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.70-x64.msi"
+}
 $PuppetInstallerPath = 'c:\vagrantshared\resources\installers'
 $PuppetInstallerFile = 'puppet.msi'
 #$PuppetInstallerFile = 'puppet-2984.msi'
