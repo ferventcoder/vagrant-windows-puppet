@@ -1,34 +1,49 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
+install_pe = false
 
-VAGRANTFILE_API_VERSION = "2"
+if install_pe
+  unless Vagrant.has_plugin?("vagrant-pe_build")
+    raise 'vagrant-pe_build is not installed!'
+  end
+end
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
- config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-
+Vagrant.configure("2") do |config|
+  config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.provider :virtualbox do |v, override|
+    v.gui = false
     v.customize ["modifyvm", :id, "--memory", "2048"]
     v.customize ["modifyvm", :id, "--cpus", "2"]
     override.vm.network :private_network, ip: "192.168.33.3"
   end
 
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network "public_network"
+  config.vm.provider :vmware_fusion do |v, override|
+    v.gui = false
+    v.vmx["memsize"] = "2048"
+    v.vmx["numvcpus"] = "2"
+  end
 
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file default.pp in the manifests_path directory.
-  #
-  # config.vm.provision "puppet" do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "site.pp"
-  # end
+  config.vm.provision :shell, :path => "shell/PrepareBox.sh"
+
+  if install_pe
+    #PE install - http://docs.puppetlabs.com/pe/latest/install_basic.html
+    config.pe_build.version = '3.4.0'
+    # if you don't have $PE_DOWNLOAD_ROOT defined,
+    # you will want to comment this line out and
+    # move to an older version of PE
+    config.pe_build.download_root = "#{ENV['PE_DOWNLOAD_ROOT']}/:version"
+    config.vm.provision :pe_bootstrap do |provisioner|
+      provisioner.role = :master
+      provisioner.verbose = true
+    end
+
+    config.vm.provision :pe_bootstrap
+  else
+    #config.vm.provision :shell, :path => "shell/PuppetInstall.sh"
+    #config.vm.provision :shell, :path => "shell/ReplacePuppetWithDev.sh"
+  end
+
+  #config.vm.provision :shell, :path => "shell/InstallModules.sh"
 end

@@ -1,6 +1,4 @@
-unless Vagrant.has_plugin?("vagrant-windows")
-  raise 'vagrant-windows is not installed!'
-end
+Vagrant.require_version ">= 1.3.5" #, "< 1.6.5"
 
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
@@ -27,10 +25,14 @@ Vagrant.configure("2") do |config|
   config.winrm.username = "vagrant"
   config.winrm.password = "vagrant"
   config.vm.guest = :windows
+  # https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html
+  # config.vm.communicator = "winrm"
+  # config.ssh.port = 22
+  # config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
   # Port forward WinRM and RDP
   config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-  #config.vm.network :forwarded_port, guest: 3389, host: 3389
+  config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
 
   #from the perspective of the box itself, not the current directory
   config.vm.synced_folder "../shared", "/vagrantshared"

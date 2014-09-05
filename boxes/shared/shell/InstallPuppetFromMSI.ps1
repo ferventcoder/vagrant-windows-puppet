@@ -1,6 +1,8 @@
-$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.6.1.msi"
+$MsiUrl = "https://downloads.puppetlabs.com/windows/puppet-3.6.2.msi"
 $PuppetInstallerPath = 'c:\vagrantshared\resources\installers'
 $PuppetInstallerFile = 'puppet.msi'
+#$PuppetInstallerFile = 'puppet-2984.msi'
+#$PuppetInstallerFile = 'puppet-2984-x64.msi'
 $PuppetInstaller = Join-Path $PuppetInstallerPath $PuppetInstallerFile
 
 $PuppetInstalled = $false

@@ -32,6 +32,10 @@ net start lmhosts
 echo 'Install puppet if missing'
 @powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\InstallPuppetFromMSI.ps1"
 
+:: Ensuring certificates are installed if box isn't updated
+certutil -v -addstore Root "c:\vagrantshared\resources\certs\geotrust.global.pem"
+certutil -v -addstore Root "c:\vagrantshared\resources\certs\usertrust.network.pem"
+
 SET PATH=%PATH%;%SystemDrive%\Program Files (x86)\Puppet Labs\Puppet\bin;%SystemDrive%\Program Files\Puppet Labs\Puppet\bin;
 
 echo "Ensuring environment for puppet - this puts the puppet ruby on the path for librarian"
