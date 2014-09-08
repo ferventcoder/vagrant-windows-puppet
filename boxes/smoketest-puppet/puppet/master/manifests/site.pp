@@ -42,7 +42,6 @@ node /^win.*$/ {
 
   package {'roundhouse':
     ensure => installed,
-    source => 'c:/vagrant/resources/packages',
   }
 }
 
