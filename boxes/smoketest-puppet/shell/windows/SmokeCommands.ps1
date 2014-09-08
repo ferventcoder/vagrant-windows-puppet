@@ -52,7 +52,7 @@ TimedCommand {cmd /c "environment.bat && where ruby && ruby --version"}
 # "===============" | Out-File "$LogFile" -Append
 # "Puppet Apply"    | Out-File "$LogFile" -Append
 # "===============" | Out-File "$LogFile" -Append
-# TimedCommand {puppet apply -e "user {'Administrator': ensure=> present}"}
+ TimedCommand {puppet apply -e "user {'Administrator': ensure=> present}"}
 
 # "==============="  | Out-File "$LogFile" -Append
 # "Puppet Agent"     | Out-File "$LogFile" -Append
