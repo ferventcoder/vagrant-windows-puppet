@@ -17,8 +17,10 @@ Vagrant.configure("2") do |config|
     master.vm.synced_folder "puppet/master/modules", "/etc/puppet/modules"
     master.vm.synced_folder "puppet/master/manifests", "/etc/puppet/manifests"
 
-    master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
+    master.vm.provision :shell, :path => "shell/linux/PrepareRHEL6.sh"
+    master.vm.provision :shell, :path => "shell/linux/SetPuppetMasterHost.sh"
     master.vm.provision :shell, :inline => 'echo "192.168.0.6  puppet" >> /etc/hosts'
+      master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
   end
 
   # config.vm.define "centos" do |centos|
@@ -43,6 +45,7 @@ Vagrant.configure("2") do |config|
   #     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   #   end
 
+  #   ubuntu.vm.provision :shell, :path => "shell/linux/PrepareUbuntu.sh"
   #   ubuntu.vm.provision :shell, :path => "shell/linux/PuppetInstallUbuntu.sh"
   #   ubuntu.vm.provision :shell, :inline => 'echo "192.168.0.6  puppet" >> /etc/hosts'
   # end

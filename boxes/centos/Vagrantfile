@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "puppet/box_modules", "/etc/puppet/modules"
   config.vm.synced_folder "puppet/manifests", "/etc/puppet/manifests"
 
+  config.vm.provision :shell, :path => "shell/PrepareRHEL6.sh"
   config.vm.provision :shell, :path => "shell/PuppetInstall.sh"
   #config.vm.provision :shell, :path => "shell/UpdateRuby.sh"
   #config.vm.provision :shell, :path => "shell/InstallUTF8Package.sh"

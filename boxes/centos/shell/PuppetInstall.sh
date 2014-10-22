@@ -1,14 +1,6 @@
 #Puppet Master Install
 # http://docs.puppetlabs.com/guides/installation.html#red-hat-enterprise-linux-and-derivatives
 
-# ensure the date/time is synced
-sudo ntpdate us.pool.ntp.org
-
-# shut down firewall permanently
-sudo service iptables save
-sudo service iptables stop
-sudo chkconfig iptables off
-
 # Set the hostname to puppet
 # sudo vim /etc/sysconfig/network
 sudo hostname puppet
