@@ -38,12 +38,12 @@ certutil -v -addstore Root "c:\vagrantshared\resources\certs\usertrust.network.p
 
 SET PATH=%PATH%;%SystemDrive%\Program Files (x86)\Puppet Labs\Puppet\bin;%SystemDrive%\Program Files\Puppet Labs\Puppet\bin;
 
-echo "Ensuring environment for puppet - this puts the puppet ruby on the path for librarian"
-call environment.bat
-SET FACTER_domain=local
+::echo "Ensuring environment for puppet - this puts the puppet ruby on the path for librarian"
+::call environment.bat
+::SET FACTER_domain=local
 
-echo 'Install Required libraries for puppet if missing'
-@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\PreparePuppetProvisioner.ps1"
+::echo 'Install Required libraries for puppet if missing'
+::@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\PreparePuppetProvisioner.ps1"
 
 ::puppet resource
 ::call puppet agent --test --debug --verbose
