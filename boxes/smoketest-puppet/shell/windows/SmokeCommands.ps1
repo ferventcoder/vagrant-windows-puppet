@@ -37,29 +37,29 @@ TimedCommand {facter --version}
 TimedCommand {hiera --version}
 TimedCommand {cmd /c "environment.bat && where ruby && ruby --version"}
 
-# "===============" | Out-File "$LogFile" -Append
-# "Help Commands"   | Out-File "$LogFile" -Append
-# "===============" | Out-File "$LogFile" -Append
-# TimedCommand {puppet help}
-# TimedCommand {puppet help apply}
+"===============" | Out-File "$LogFile" -Append
+"Help Commands"   | Out-File "$LogFile" -Append
+"===============" | Out-File "$LogFile" -Append
+TimedCommand {puppet help}
+TimedCommand {puppet help apply}
 
-# "===============" | Out-File "$LogFile" -Append
-# "Resources"       | Out-File "$LogFile" -Append
-# "===============" | Out-File "$LogFile" -Append
-# TimedCommand {puppet resource user}
-# TimedCommand {puppet resource package --param provider}
+"===============" | Out-File "$LogFile" -Append
+"Resources"       | Out-File "$LogFile" -Append
+"===============" | Out-File "$LogFile" -Append
+TimedCommand {puppet resource user}
+TimedCommand {puppet resource package --param provider}
 
-# "===============" | Out-File "$LogFile" -Append
-# "Puppet Apply"    | Out-File "$LogFile" -Append
-# "===============" | Out-File "$LogFile" -Append
+"===============" | Out-File "$LogFile" -Append
+"Puppet Apply"    | Out-File "$LogFile" -Append
+"===============" | Out-File "$LogFile" -Append
  TimedCommand {puppet apply -e "user {'Administrator': ensure=> present}"}
 
-# "==============="  | Out-File "$LogFile" -Append
-# "Puppet Agent"     | Out-File "$LogFile" -Append
-# "==============="  | Out-File "$LogFile" -Append
-# TimedCommand {&net stop puppet}
-# TimedCommand {&net start puppet}
-# TimedCommand {puppet agent -t}
+"==============="  | Out-File "$LogFile" -Append
+"Puppet Agent"     | Out-File "$LogFile" -Append
+"==============="  | Out-File "$LogFile" -Append
+TimedCommand {&net stop puppet}
+TimedCommand {&net start puppet}
+TimedCommand {puppet agent -t}
 
 "===============" | Out-File "$LogFile" -Append
 "Module Tests"    | Out-File "$LogFile" -Append
