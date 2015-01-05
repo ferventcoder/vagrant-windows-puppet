@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
   config.vm.guest = :windows
   # https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html
   config.vm.communicator = "winrm"
-  config.ssh.port = 22
+  #config.ssh.port = 22
   config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
   # Port forward WinRM and RDP
