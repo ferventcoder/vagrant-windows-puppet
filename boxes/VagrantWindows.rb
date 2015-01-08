@@ -26,13 +26,19 @@ Vagrant.configure("2") do |config|
   config.winrm.password = "vagrant"
   config.vm.guest = :windows
   # https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html
-  config.vm.communicator = "winrm"
-  #config.ssh.port = 22
-  config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
-  # Port forward WinRM and RDP
+  if Vagrant::VERSION < '1.6.0'
+    ## ensure vagrant-windows gem
+  else
+    config.vm.communicator = "winrm"
+  end
+
+  # Port forward WinRM / RDP
   config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
   config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
+  # Port forward SSH (ssh is forwarded by default in most versions of Vagrant, but be sure)
+  #  It's not necessary if you are not using SSH, but it doesn't hurt anything to have it
+  config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
   #from the perspective of the box itself, not the current directory
   config.vm.synced_folder "../shared", "/vagrantshared"
