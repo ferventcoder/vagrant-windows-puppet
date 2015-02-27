@@ -22,7 +22,10 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "puppet/box_modules", "/DOCUME~1/ALLUSE~1/APPLIC~1/PUPPET~1/puppet/etc/modules"
 
   # # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
-  config.vm.provision :shell, :path => "../shared/shell/main.cmd"
+  config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallNet4.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
