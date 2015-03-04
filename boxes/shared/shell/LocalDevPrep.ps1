@@ -11,9 +11,12 @@ choco install ruby2.devkit
 #  - run 'ruby dk.rb install'
 
 # https://gist.github.com/luislavena/f064211759ee0f806c88
-$ssl_cert = 'C:\tools\ruby215\lib\ruby\2.1.0\rubygems\ssl_certs\AddTrustExternalCARoot-2048.pem'
+$rubygems = &gem which rubygems
+$ssl_cert_location = $rubygems.Replace(".rb","/ssl_certs/AddTrustExternalCARoot-2048.pem")
 $ssl_cert_url = 'https://raw.githubusercontent.com/rubygems/rubygems/master/lib/rubygems/ssl_certs/AddTrustExternalCARoot-2048.pem'
-&curl -o "$ssl_cert" "$ssl_cert_url"
+&curl.exe -o "$ssl_cert_location" "$ssl_cert_url"
+#(New-Object Net.WebClient).DownloadFile("$ssl_cert_url","$ssl_cert_location")
+
 &gem install --no-ri --no-rdoc bundler
 &bundler config --global jobs 4
 &gem install --no-ri --no-rdoc debug_inspector -v '0.0.2'
