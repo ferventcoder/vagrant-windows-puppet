@@ -41,33 +41,34 @@
 
 #,'PowerGuiVSX'
 
-package {'disableuac':
-  ensure => latest,
-  provider => chocolatey,
-} ->
-package {['SublimeText2.app'
-    ,'notepadplusplus'
-    ,'fiddler'
-    ,'sysinternals'
-    ,'poshgit'
-    ,'gitextensions'
-    ,'growl'
-    ,'conemu'
-    ,'powergui'
-    ,'pester'
-    ,'psget'
-    ]:
-  ensure => latest,
-  provider => chocolatey,
-}
 
-package {'powershell4':
-  ensure => latest,
-  provider => chocolatey,
-  notify => Package['vagrant-winrm-config'],
-}
+# package {'disableuac':
+#   ensure => latest,
+#   provider => chocolatey,
+# } ->
+# package {['SublimeText2.app'
+#     ,'notepadplusplus'
+#     ,'fiddler'
+#     ,'sysinternals'
+#     ,'poshgit'
+#     ,'gitextensions'
+#     ,'growl'
+#     ,'conemu'
+#     ,'powergui'
+#     ,'pester'
+#     ,'psget'
+#     ]:
+#   ensure => latest,
+#   provider => chocolatey,
+# }
 
-package {'vagrant-winrm-config':
-  ensure => latest,
-  provider => chocolatey,
-}
+# package {'powershell4':
+#   ensure => latest,
+#   provider => chocolatey,
+#   notify => Package['vagrant-winrm-config'],
+# }
+
+# package {'vagrant-winrm-config':
+#   ensure => latest,
+#   provider => chocolatey,
+# }

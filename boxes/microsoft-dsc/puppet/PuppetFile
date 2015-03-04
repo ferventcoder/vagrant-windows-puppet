@@ -1,7 +1,8 @@
 # Configuration for librarian-puppet.
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 mod 'joshcooper/powershell'
+mod 'msutter/dsc'
 
 #mod 'puppetlabs/registry'
 
