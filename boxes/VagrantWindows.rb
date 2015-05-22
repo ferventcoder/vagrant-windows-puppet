@@ -1,4 +1,7 @@
 Vagrant.require_version ">= 1.3.5" #, "< 1.6.5"
+if Vagrant::VERSION < '1.6.0'
+  Vagrant.require_plugin "vagrant-windows"
+end
 
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
@@ -27,9 +30,7 @@ Vagrant.configure("2") do |config|
   config.vm.guest = :windows
   # https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html
 
-  if Vagrant::VERSION < '1.6.0'
-    ## ensure vagrant-windows gem
-  else
+  if Vagrant::VERSION >= '1.6.0'
     config.vm.communicator = "winrm"
   end
 
