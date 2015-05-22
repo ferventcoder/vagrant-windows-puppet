@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
   #config.vm.synced_folder "~/.vagrant.d/boxes", "/Users/Administrator/.vagrant.d/boxes"
 
+  config.vm.network :forwarded_port, guest: 80, host: 9080, id: "web", auto_correct: true
+
   # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
   config.vm.provision :shell, :path => "../shared/shell/main.cmd"
 
@@ -33,7 +35,7 @@ Vagrant.configure("2") do |config|
   # are contained in a directory path relative to this Vagrantfile.
   config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
     puppet.manifests_path = "puppet/manifests"
-    puppet.manifest_file  = "site.pp"
+    puppet.manifest_file  = "empty.pp"
     puppet.module_path = "puppet/modules"
     puppet.facter = {
       "domain" => "local",
