@@ -5,8 +5,12 @@ resources
 *.ovf
 .DS_Store
 .pe_build
+.tmp
+.librarian
 
+PuppetFile.lock
 boxes/transient
 box_modules
 modules
 installers
+
