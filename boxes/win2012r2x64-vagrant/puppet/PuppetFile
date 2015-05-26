@@ -9,7 +9,7 @@ mod 'puppetlabs/registry'
 # mod 'puppetlabs/java'
 # mod 'darin/zypprepo'
 
-mod 'rismoney/chocolatey', :git => 'git://github.com/chocolatey/puppet-chocolatey.git'
+mod 'chocolatey/chocolatey', :git => 'git://github.com/chocolatey/puppet-chocolatey.git'
 
 # mod 'openstack-hyper-v/windows_common',
 #   :git => 'https://github.com/openstack-hyper-v/puppet-windows_common.git',
