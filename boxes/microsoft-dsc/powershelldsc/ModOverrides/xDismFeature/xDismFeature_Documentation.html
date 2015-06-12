@@ -1,0 +1,184 @@
+﻿<body>
+    <div id="longDesc">
+        <span style="font-family:Calibri; font-size:medium">
+            <h1 style="font-family:Calibri Light; color:#2e74b5; font-size:large">Introduction</h1>
+            <p>
+                The<strong> xDismFeature</strong> module is a part of the Windows PowerShell Desired State Configuration (DSC) Resource Kit, which is a collection of DSC Resources produced by the PowerShell Team.
+                This module enables or disables Windows optional features that specifically need to be handled by DISM.exe.
+                The<strong> xDismFeature</strong> module contains a single resource, <strong>xDismFeature</strong>.
+            </p>
+            <p>
+                <strong>
+                    All of the resources in the DSC Resource Kit are provided AS IS, and are not supported through any Microsoft standard support program
+                    or service. The ""x" in xDismFeature stands for experimental
+                </strong>, which means that these resources will be <strong>fix forward</strong>
+                and monitored by the module owner(s).
+            </p>
+            <p>Please leave comments, feature requests, and bug reports in the Q &amp; A tab for this module.</p>
+            <p>
+                If you would like to modify <strong>xDismFeature</strong> module, feel free. When modifying, please update the module name, resource friendly name,
+                and MOF class name (instructions below). As specified in the license, you may copy or modify this resource as long as they are used on the Windows Platform.
+            </p>
+            <p>
+                For more information about Windows PowerShell Desired State Configuration, check out the blog posts on the
+                <a href="http://blogs.msdn.com/b/powershell/"><span style="color:#0000ff">PowerShell Blog</span></a> (
+        </span><a href="http://blogs.msdn.com/b/powershell/archive/2013/11/01/configuration-in-a-devops-world-windows-powershell-desired-state-configuration.aspx"><span style="color:#0000ff">this</span></a> is a good starting point). There are
+        also great community resources, such as <a href="http://powershell.org/wp/tag/dsc/"><span style="color:#0000ff">PowerShell.org</span></a>, or
+        <a href="http://www.powershellmagazine.com/tag/dsc/"><span style="color:#0000ff">PowerShell Magazine</span></a>. For more information on the DSC Resource Kit, check out
+        <a href="http://go.microsoft.com/fwlink/?LinkID=389546"><span style="color:#0000ff">this blog post</span></a>.<br></p>
+
+        <h1 style="color:#2e74b5; font-family:Calibri Light; font-size:large">Installation</h1>
+        <p>To install the <strong>xDismFeature</strong> module </p>
+        <ul style="list-style-type:disc; direction:ltr">
+            <li>Unzip the content under $env:ProgramFiles\WindowsPowerShell\Modules folder</li>
+        </ul>
+        <p>To confirm installation:<br></p>
+        <ul style="list-style-type:disc; direction:ltr">
+            <li>
+                Run <strong>Get-DSCResource</strong> to see that <strong>xDismFeature</strong> is among the DSC Resources listed.<br>
+            </li>
+        </ul>
+
+        <h1 style="color:#2e74b5; font-family:Calibri Light; font-size:large">Requirements</h1>
+        <p>
+            This module requires the latest version of PowerShell (v4.0, which ships in Windows 8.1 or Windows Server 2012R2). To easily use PowerShell 4.0 on older operating systems,
+            <a href="http://www.microsoft.com/en-us/download/details.aspx?id=40855"><span style="color:#0000ff">install WMF 4.0</span></a>. Please read the installation instructions
+            that are present on both the download page and the release notes for WMF 4.0.
+        </p>
+
+        <h1 style="color:#2e74b5; font-family:Calibri Light; font-size:large">Description</h1>
+        <p>
+            The <strong>xDismFeature </strong> module contains the <strong>xDismFeature</strong> DSC Resource. This DSC
+            module enables the install and uninstall of features that require the use of DISM.EXE
+        </p>
+        <p><strong>xDismFeatureConsoleSetup </strong> has the following properties:</p>
+        <ul style="list-style-type:disc; direction:ltr">
+            <li>
+                <span style="width: 250px; float: left; font-weight: bold;">Ensure: </span>An enumerated value (Present, Absent) to indicate if the feature is or is not installed.
+            </li>
+            <li>
+                <span style="width: 250px; float: left; font-weight: bold;">Name: </span>KEY - The name of the feature to be installed.
+            </li>
+        </ul>
+
+        <h1 style="color:#2e74b5; font-family:Calibri Light; font-size:large">Renaming Requirements</h1>
+        <p>When making changes to these resources, we suggest the following practice:</p>
+        <ol style="list-style-type:decimal; direction:ltr">
+            <li>
+                Update the following names by replacing MSFT with your company/community name and replacing the <strong>"x"</strong> with <strong>"c"</strong> (short for "Community") or another prefix of your choice:
+                <ul>
+                    <li>
+                        <strong>Module name (ex: xDismFeature</strong> becomes <strong>cDismFeature</strong>)
+                    </li>
+                    <li>
+                        <strong>Resource folder (ex: MSFT_xDismFeature</strong> becomes <strong>Contoso_cDismFeature</strong>)
+                    </li>
+                    <li>
+                        <strong>Resource Name (ex: MSFT_xDismFeature</strong> becomes <strong>Contoso_cDismFeature</strong>)
+                    </li>
+                    <li>
+                        <strong>Resource Friendly Name (ex: xDismFeature</strong> becomes <strong>cDismFeature</strong>)
+                    </li>
+                    <li>
+                        <strong>MOF class name (ex: MSFT_xDismFeature</strong> becomes <strong>Contoso_cDismFeature</strong>)
+                    </li>
+                    <li>
+                        <strong>Filename for the &lt;resource&gt;.schema.mof (ex: MSFT_xDismFeature</strong>.schema.mof becomes <strong>Contoso_cDismFeature</strong>.schema.mof)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Update module and metadata information in the module manifest
+            </li>
+            <li>
+                Update any configuration that use these resources
+            </li>
+        </ol>
+        <p><em>We reserve resource and module names without prefixes ("x" or "c") for future use (e.g. "MSFT_DismFeature" or "DismFeature"). If the next version of Windows Server ships with "MSFT_DismFeature" resources, we don't want to break any configurations that use any community modifications. Please keep a prefix such as "c" on all community modifications.</em></p>
+
+
+        <h1 style="color:#2e74b5; font-family:Calibri Light; font-size:large">Versions</h1>
+        <p>1.0.0</p>
+        <ul style="list-style-type:disc; direction:ltr">
+            <li>
+                Initial release with the following resources
+                <ul style="list-style-type:circle">
+                    <li>
+                        xDismFeature
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h1 style="margin-bottom:0pt; font-family:Calibri Light; color:#2e74b5; font-size:large">Example: Enable the Single Instance Storage feature on Windows Server</h1>
+            <div id="longDesc">
+                <span style="font-family:Calibri; font-size:medium">
+                    <h1 style="font-family:Calibri Light; color:#2e74b5; font-size:large">
+                        <div class="scriptcode">
+                            <div class="pluginEditHolder" plugincommand="mceScriptCode">
+                                <div class="title"><span>PowerShell</span></div>
+                                <div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+                                <span class="hidden">powershell</span>
+<pre class="hidden">    Configuration SIS-Limited
+    {
+    Import-DscResource -Module xDismFeature
+    Node 'NodeName'
+    {
+    Ensure = 'Present'
+    Name = 'SIS-Limited'
+    }
+    }</pre>
+                                <div class="preview">
+<pre class="powershell">&nbsp;&nbsp;&nbsp;&nbsp;Configuration&nbsp;SIS<span class="powerShell__operator">-</span>Limited&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Import<span class="powerShell__operator">-</span>DscResource&nbsp;<span class="powerShell__operator">-</span>Module&nbsp;xDismFeature&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;<span class="powerShell__string">'NodeName'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Ensure&nbsp;=&nbsp;<span class="powerShell__string">'Present'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;=&nbsp;<span class="powerShell__string">'SIS-Limited'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="endscriptcode">&nbsp;</div>
+
+                        <h1 style="margin-bottom:0pt; font-family:Calibri Light; color:#2e74b5; font-size:large">Example: Disable the Single Instance Storage feature on Windows Server.</h1>
+                        <div id="longDesc">
+                            <span style="font-family:Calibri; font-size:medium">
+                                <h1 style="font-family:Calibri Light; color:#2e74b5; font-size:large">
+                                    <div class="scriptcode">
+                                        <div class="pluginEditHolder" plugincommand="mceScriptCode">
+                                            <div class="title"><span>PowerShell</span></div>
+                                            <div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+                                            <span class="hidden">powershell</span>
+<pre class="hidden">    Configuration SIS-Limited
+    {
+    Import-DscResource -Module xDismFeature
+    Node 'NodeName'
+    {
+    Ensure = 'Absent'
+    Name = 'SIS-Limited'
+    }
+    }</pre>
+                                            <div class="preview">
+<pre class="powershell">&nbsp;&nbsp;&nbsp;&nbsp;Configuration&nbsp;SIS<span class="powerShell__operator">-</span>Limited&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Import<span class="powerShell__operator">-</span>DscResource&nbsp;<span class="powerShell__operator">-</span>Module&nbsp;xDismFeature&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;<span class="powerShell__string">'NodeName'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Ensure&nbsp;=&nbsp;<span class="powerShell__string">'Absent'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;=&nbsp;<span class="powerShell__string">'SIS-Limited'</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="endscriptcode">&nbsp;</div>
+
+
+                                    <p></p><p></p>
+                            </span>
+                        </div>
+</body>
