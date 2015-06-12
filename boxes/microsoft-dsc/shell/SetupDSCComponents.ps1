@@ -29,6 +29,10 @@ cmd /c "sc config wuauserv start= demand"
 $wmfDownloadUrl = 'http://download.microsoft.com/download/B/5/1/B5130F9A-6F07-481A-B4A6-CEDED7C96AE2/WindowsBlue-KB3037315-x64.msu'
 #$wmfDownloadUrl = 'http://download.microsoft.com/download/B/5/1/B5130F9A-6F07-481A-B4A6-CEDED7C96AE2/Windows8-RT-KB3037667-x64.msu'
 $wmfInstallerFile = 'WindowsBlue-KB3037315-x64.msu'
+#April 2015 WMF 5.0 Preview
+$wmfDownloadUrl = 'http://download.microsoft.com/download/4/9/6/496E0D89-F3B0-4FB0-B110-5F135C30325F/WindowsBlue-KB3055381-x64.msu'
+$wmfInstallerFile = 'WindowsBlue-KB3055381-x64.msu'
+
 $wmfInstaller = Join-Path $wmfPath $wmfInstallerFile
 
 if (!(Test-Path $wmfPath)) {
