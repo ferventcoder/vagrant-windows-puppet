@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
   config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
   #config.vm.provision :shell, :path => "../shared/shell/PreparePuppetProvisioner.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.

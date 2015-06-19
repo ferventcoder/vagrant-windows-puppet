@@ -37,6 +37,7 @@ certutil -v -addstore Root "c:\vagrantshared\resources\certs\geotrust.global.pem
 certutil -v -addstore Root "c:\vagrantshared\resources\certs\usertrust.network.pem"
 
 SET PATH=%PATH%;%SystemDrive%\Program Files (x86)\Puppet Labs\Puppet\bin;%SystemDrive%\Program Files\Puppet Labs\Puppet\bin;
+@powershell -NoProfile -ExecutionPolicy Bypass -File "c:\vagrantshared\shell\NotifyGuiAppsOfEnvironmentChanges.ps1"
 
 ::echo "Ensuring environment for puppet - this puts the puppet ruby on the path for librarian"
 ::call environment.bat
