@@ -64,7 +64,7 @@ TimedCommand {puppet agent -t}
 "===============" | Out-File "$LogFile" -Append
 "Module Tests"    | Out-File "$LogFile" -Append
 "===============" | Out-File "$LogFile" -Append
-#TimedCommand {puppet module install rismoney-chocolatey}
+#TimedCommand {puppet module install chocolatey-chocolatey}
 #TimedCommand {puppet apply --debug --verbose --trace c:\vagrant\puppet\agent\module_tests.pp}
 
 $ModulesFolder = "$env:ProgramData\PuppetLabs\puppet\etc\modules"

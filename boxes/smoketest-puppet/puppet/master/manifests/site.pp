@@ -1,11 +1,10 @@
-case $::operatingsystem {
-  windows: {
-    Package {
-      provider => chocolatey,
-    }
-  }
-}
-
+# case $::operatingsystem {
+#   windows: {
+#     Package {
+#       provider => chocolatey,
+#     }
+#   }
+# }
 
 node default {
   package { 'vim':
@@ -40,8 +39,8 @@ node /^win.*$/ {
     content => 'This was put here on a master sync',
   }
 
-  package {'roundhouse':
-    ensure => installed,
-  }
+  # package {'roundhouse':
+  #   ensure => installed,
+  # }
 }
 
