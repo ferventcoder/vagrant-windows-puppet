@@ -1,5 +1,4 @@
 Write-Host "Sometimes explorer.exe just doesn't get the message that it should update environment variables"
-
 if (-not ("win32.nativemethods" -as [type])) {
     # import sendmessagetimeout from win32
     add-type -Namespace Win32 -Name NativeMethods -MemberDefinition @"

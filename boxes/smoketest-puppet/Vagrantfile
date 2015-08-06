@@ -119,10 +119,11 @@ Vagrant.configure("2") do |config|
     end
 
     if !install_pe
-      # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-      win2012.vm.provision :shell, :path => "../shared/shell/main.cmd"
+      win2012.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+      win2012.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+      win2012.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     else
-      win2012.vm.provision :shell, :path => '../shared/shell/windowsprep.cmd'
+      win2012.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
       #PE install
       win2012.pe_build.version = pe_version
       # if you don't have $PE_DOWNLOAD_ROOT defined,
@@ -167,10 +168,11 @@ Vagrant.configure("2") do |config|
     end
 
     if !install_pe
-      # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-      win2008.vm.provision :shell, :path => "../shared/shell/main.cmd"
+      win2008.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+      win2008.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+      win2008.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     else
-      win2008.vm.provision :shell, :path => '../shared/shell/windowsprep.cmd'
+      win2008.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
       #PE install
       win2008.pe_build.version = pe_version
       # if you don't have $PE_DOWNLOAD_ROOT defined,
@@ -215,10 +217,11 @@ Vagrant.configure("2") do |config|
     end
 
     if !install_pe
-      # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-      win2003.vm.provision :shell, :path => "../shared/shell/main.cmd"
+      win2003.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+      win2003.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+      win2003.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     else
-      win2003.vm.provision :shell, :path => '../shared/shell/windowsprep.cmd'
+      win2003.vm.provision :shell, :path => '../shared/shell/PrepareWindows.ps1'
       #PE install
       win2003.pe_build.version = pe_version
       # if you don't have $PE_DOWNLOAD_ROOT defined,
