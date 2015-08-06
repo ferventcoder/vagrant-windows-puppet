@@ -102,7 +102,11 @@ Vagrant.configure("2") do |config|
     win2012.winrm.password = "vagrant"
     # Configure base box parameters
     win2012.vm.guest = :windows
-    # Port forward WinRM and RDP
+    if Vagrant::VERSION >= '1.6.0'
+      win2012.vm.communicator = "winrm"
+    end
+
+    # Port forward WinRM
     win2012.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
     win2012.vm.synced_folder "../shared", "/vagrantshared"
@@ -151,7 +155,11 @@ Vagrant.configure("2") do |config|
     win2008.winrm.password = "vagrant"
     # Configure base box parameters
     win2008.vm.guest = :windows
-    # Port forward WinRM and RDP
+    if Vagrant::VERSION >= '1.6.0'
+      win2008.vm.communicator = "winrm"
+    end
+
+    # Port forward WinRM
     win2008.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
     win2008.vm.synced_folder "../shared", "/vagrantshared"
@@ -200,7 +208,10 @@ Vagrant.configure("2") do |config|
     win2003.winrm.password = "vagrant"
     # Configure base box parameters
     win2003.vm.guest = :windows
-    # Port forward WinRM and RDP
+    if Vagrant::VERSION >= '1.6.0'
+      win2003.vm.communicator = "winrm"
+    end
+    # Port forward WinRM
     win2003.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
     win2003.vm.synced_folder "../shared", "/vagrantshared"
