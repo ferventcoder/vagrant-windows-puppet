@@ -11,6 +11,7 @@ printf "Creating a vagrant basebox named $BoxName \n"
 
 # Remove existing artifacts
 rm -f $BoxName
+rm -f "${BoxName}.md5"
 
 # Prepare the VM
 #vmware-vdiskmanager -R "${VMPath}${VMName}.vmdk"

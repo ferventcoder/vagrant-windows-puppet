@@ -14,6 +14,7 @@ printf "Creating a vagrant basebox named $BoxName \n"
 rm -f box-disk1.vmdk
 rm -f box.ovf
 rm -f $BoxName
+rm -f "${BoxName}.md5"
 
 # Prepare the VM
 vboxmanage export "$VMPath" -o $OVFName #--vsys 0 --eula "This is for evaluation purposes only. You must provide a valid license to use this box."

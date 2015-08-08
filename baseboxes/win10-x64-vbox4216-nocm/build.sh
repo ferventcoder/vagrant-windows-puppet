@@ -2,7 +2,7 @@
 
 CurrentDir=$(pwd)
 BoxBaseName=${PWD##*/}
-VMName=win2012r2x64
+VMName=win10
 VMPath=~/VirtualBox\ VMs/${VMName}/${VMName}.vbox
 BoxName=${BoxBaseName}.box
 OVFName=box.ovf
@@ -17,6 +17,10 @@ rm -f $BoxName
 rm -f "${BoxName}.md5"
 
 # Prepare the VM
+# compacting for vmdk is not yet supported.
+#vboxmanage modifyhd ~/VirtualBox\ VMs/${VMName}/${VMName}.vmdk --compact
+#vmware-vdiskmanager -d "~/VirtualBox\ VMs/${VMName}/${VMName}.vmdk"
+#vmware-vdiskmanager -k "~/VirtualBox\ VMs/${VMName}/${VMName}.vmdk"
 vboxmanage export "$VMPath" -o $OVFName #--vsys 0 --eula "This is for evaluation purposes only. You must provide a valid license to use this box."
 
 # Tar and gzip the box

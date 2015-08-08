@@ -14,6 +14,7 @@ printf "Creating a vagrant basebox named $BoxName \n"
 rm -f box-disk1.vmdk
 rm -f box.ovf
 rm -f $BoxName
+rm -f "${BoxName}.md5"
 
 # Prepare the VM
 #VBoxManage registervm "$VMPath"
