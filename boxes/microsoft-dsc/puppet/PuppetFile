@@ -2,17 +2,19 @@
 forge "https://forgeapi.puppetlabs.com"
 
 #mod 'puppetlabs-windows'
+mod 'puppetlabs-stdlib'
 mod 'puppetlabs-powershell'
-mod 'puppetlabs-acl'
-mod 'puppetlabs-reboot'
+
+# get DSC from somewhere or do a symlink to it.
+#mod 'msutter/dsc'
+#mod 'puppetlabs/dsc',
+#  :git => 'git://github.com/puppetlabs/puppetlabs-dsc.git',
+#  :ref => "master"
+
+#mod 'puppetlabs-acl'
+#mod 'puppetlabs-reboot'
+#mod 'chocolatey-chocolatey'
 #mod 'puppetlabs-registry'
 #mod 'puppet-windowsfeature'
 #mod 'puppet-iis'
 #mod 'puppetlabs-dism'
-
-mod 'chocolatey-chocolatey'
-
-mod 'msutter/dsc'
-#mod 'puppetlabs/dsc',
-#  :git => 'git://github.com/puppetlabs/puppetlabs-dsc.git',
-#  :ref => "master"

@@ -32,7 +32,7 @@ param (
 .\Enable-LCM.ps1
 $CimSession = New-CimSession -ComputerName localhost
 Set-DscLocalConfigurationManager -Path .\Enabled -CimSession $CimSession
-[Environment]::SetEnvironmentVariable('TestEnv', 'BOB', 'Machine')
+[Environment]::SetEnvironmentVariable('TestEnv', '', 'Machine')
 
 # tests
 
@@ -42,23 +42,33 @@ $timer = [System.Diagnostics.Stopwatch]::StartNew()
 $CimSession = New-CimSession -ComputerName localhost
 Set-DscLocalConfigurationManager -Path .\Disabled -CimSession $CimSession
 
-
 $params = @{
-  Name = 'File'
+  Name = 'Environment'
   Property = @{
     Ensure = "Present"
-    Contents = "testcdddontent"
-    DestinationPath = "c:\test.txt"
+    Name = "TestEnv"
+    Path = $false
+    Value = "Test"
   }
   Verbose = $true
 }
+
+# $params = @{
+#   Name = 'File'
+#   Property = @{
+#     Ensure = "Present"
+#     Contents = "testcdddontent"
+#     DestinationPath = "c:\test.txt"
+#   }
+#   Verbose = $true
+# }
 
 $result = Invoke-DscResource @params -Method Test
 
 #$result | Get-Member
 
 if (-not $result.InDesiredState) {
-  $bill = Invoke-DscResource -Method Get @params
+  #$bill = Invoke-DscResource -Method Get @params
   TimedCommand { Invoke-DscResource -Method Set @params }
 }
 
