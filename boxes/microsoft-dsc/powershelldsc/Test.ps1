@@ -61,7 +61,7 @@ Configuration TestConfig {
 
     File TestFile {
       Ensure = "Present"
-      Contents = "testcontent"
+      Contents = "Hi! testcontent"
       DestinationPath = "c:\testdsc\test.txt"
     }
     # notes - weird, this still validates the contents are the same with no checksum

@@ -1,20 +1,9 @@
 # Configuration for librarian-puppet.
 
-forge "http://forge.puppetlabs.com"
+forge "https://forgeapi.puppetlabs.com"
 
 mod 'puppetlabs/powershell'
-mod 'puppetlabs/registry'
-# mod 'basti1302/windows_path'
-# mod 'puppetlabs/apt'
-# mod 'puppetlabs/java'
-# mod 'darin/zypprepo'
+mod 'puppetlabs/stdlib'
+#mod 'puppetlabs/registry'
 
-mod 'chocolatey/chocolatey', :git => 'git://github.com/chocolatey/puppet-chocolatey.git'
-
-# mod 'openstack-hyper-v/windows_common',
-#   :git => 'https://github.com/openstack-hyper-v/puppet-windows_common.git',
-#   :ref => "master"
-
-# mod 'openstackhyperv/jenkins',
-#   :git => 'git://github.com/openstack-hyper-v/puppet-jenkins.git',
-#   :ref => "master"
+mod 'chocolatey/chocolatey'

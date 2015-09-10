@@ -22,19 +22,19 @@ Vagrant.configure("2") do |config|
     #v.customize ["modifyvm", :id, "--vram", 16]
   end
 
-  config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
-  #config.vm.synced_folder "~/.vagrant.d/boxes", "/Users/Administrator/.vagrant.d/boxes"
+  config.vm.synced_folder "puppet/modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
 
-  #config.vm.network :forwarded_port, guest: 80, host: 9080, id: "web", auto_correct: true
-
-  # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
-  config.vm.provision :shell, :path => "../shared/shell/main.cmd"
+  # These install chocolatey, ruby, and puppet. Also runs librarian-puppet.
+  config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
     puppet.manifests_path = "puppet/manifests"
-    puppet.manifest_file  = "empty.pp"
+    puppet.manifest_file  = "dsc.pp"
     puppet.module_path = "puppet/modules"
     puppet.facter = {
       "domain" => "local",
