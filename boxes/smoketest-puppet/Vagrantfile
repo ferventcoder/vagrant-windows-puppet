@@ -1,5 +1,5 @@
 install_pe = false
-pe_version = '3.3.0'
+pe_version = '3.8.0'
 #Vagrant.require_plugin "vagrant-windows"
 
 if install_pe
@@ -7,7 +7,6 @@ if install_pe
     raise 'vagrant-pe_build is not installed!'
   end
 end
-
 
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -108,6 +107,9 @@ Vagrant.configure("2") do |config|
 
     # Port forward WinRM
     win2012.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    # Port forward SSH (ssh is forwarded by default in most versions of Vagrant, but be sure)
+    # It's not necessary if you are not using SSH, but it doesn't hurt anything to have it
+    win2012.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
     win2012.vm.synced_folder "../shared", "/vagrantshared"
     # Provider-specific configuration so you can fine-tune various
@@ -118,7 +120,11 @@ Vagrant.configure("2") do |config|
       v.gui = true
       # Use the host's DNS resolver
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      # Use VBoxManage to customize the VM. For example to change memory:
+      # Optimize settings
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
+      # Adjust the memory
       #v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
@@ -140,6 +146,7 @@ Vagrant.configure("2") do |config|
         provisioner.master = 'puppet'
       end
       win2012.vm.provision :pe_bootstrap
+      win2012.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     end
 
     win2012.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
@@ -161,6 +168,9 @@ Vagrant.configure("2") do |config|
 
     # Port forward WinRM
     win2008.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    # Port forward SSH (ssh is forwarded by default in most versions of Vagrant, but be sure)
+    # It's not necessary if you are not using SSH, but it doesn't hurt anything to have it
+    win2008.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
     win2008.vm.synced_folder "../shared", "/vagrantshared"
     # Provider-specific configuration so you can fine-tune various
@@ -171,7 +181,11 @@ Vagrant.configure("2") do |config|
       v.gui = true
       # Use the host's DNS resolver
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      # Use VBoxManage to customize the VM. For example to change memory:
+      # Optimize settings
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
+      # Adjust the memory
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
@@ -193,6 +207,7 @@ Vagrant.configure("2") do |config|
         provisioner.master = 'puppet'
       end
       win2008.vm.provision :pe_bootstrap
+      win2008.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     end
 
     win2008.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"
@@ -213,6 +228,9 @@ Vagrant.configure("2") do |config|
     end
     # Port forward WinRM
     win2003.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+    # Port forward SSH (ssh is forwarded by default in most versions of Vagrant, but be sure)
+    # It's not necessary if you are not using SSH, but it doesn't hurt anything to have it
+    win2003.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
 
     win2003.vm.synced_folder "../shared", "/vagrantshared"
     # Provider-specific configuration so you can fine-tune various
@@ -223,7 +241,11 @@ Vagrant.configure("2") do |config|
       v.gui = true
       # Use the host's DNS resolver
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      # Use VBoxManage to customize the VM. For example to change memory:
+      # Optimize settings
+      v.customize ["modifyvm", :id, "--audio", "none"]
+      v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+      v.customize ["modifyvm", :id, "--usb", "off"]
+      # Adjust the memory
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
 
@@ -245,6 +267,7 @@ Vagrant.configure("2") do |config|
         provisioner.master = 'puppet'
       end
       win2003.vm.provision :pe_bootstrap
+      win2003.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
     end
 
     win2003.vm.provision :shell, :path => "shell/windows/SmokeCommands.ps1"

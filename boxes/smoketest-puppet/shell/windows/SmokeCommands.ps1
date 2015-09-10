@@ -75,6 +75,9 @@ TimedCommand {puppet apply c:\vagrant\puppet\agent\acl_module_tests.pp}
 
 TimedCommand {&icacls c:\temp} -logOperationTime $false
 
+TimedCommand {puppet module install puppetlabs-stdlib}
+TimedCommand {puppet module install badgerious-windows_env}
+
 TimedCommand {puppet module install puppetlabs-powershell}
 TimedCommand {puppet apply c:\vagrant\puppet\agent\powershell_module_tests.pp}
 #Remove-Item "$ModulesFolder\powershell" -Force
