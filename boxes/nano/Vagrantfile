@@ -1,0 +1,44 @@
+# Load upstream windows vagrant file with common settings
+windows_vagrantfile = File.expand_path("../../VagrantWindows.rb", __FILE__)
+load windows_vagrantfile if File.exist?(windows_vagrantfile)
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "mwrock/WindowsNano"
+
+  config.vm.provider :vmware_fusion do |v, override|
+    #override.vm.box_url = ENTER A URL TO A VALID VMWARE FUSION BASE BOX OF win2012r2
+    #create memory pressure
+    #v.vmx["memsize"] = "356"
+    #v.vmx["numvcpus"] = "1"
+  end
+
+  config.vm.provider :virtualbox do |v, override|
+    #override.vm.box_url = ENTER A URL TO A VALID VIRTUALBOX BASE BOX OF win2012r2
+    override.vm.network :private_network, ip: "192.168.0.32"
+    override.vm.network :private_network, ip: "192.168.33.32"
+    #really memory suppress settings
+    #v.customize ["modifyvm", :id, "--memory", "356"]
+    #v.customize ["modifyvm", :id, "--cpus", 1]
+    #v.customize ["modifyvm", :id, "--vram", 16]
+  end
+
+  config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
+  #config.vm.synced_folder "~/.vagrant.d/boxes", "/Users/Administrator/.vagrant.d/boxes"
+
+  # This shell provisioner installs chocolatey and puppet. Also runs librarian-puppet.
+  #config.vm.provision :shell, :path => "../shared/shell/main.cmd"
+
+  # Enable provisioning with Puppet stand alone.  Puppet manifests
+  # are contained in a directory path relative to this Vagrantfile.
+  #config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
+  #  puppet.manifests_path = "puppet/manifests"
+  #  puppet.manifest_file  = "empty.pp"
+  #  puppet.module_path = "puppet/modules"
+  #  puppet.facter = {
+  #    "domain" => "local",
+  #    "kernel" => "windows",
+  #    "operatingsystem" => "windows",
+  #    "osfamily" => "windows",
+  #  }
+  #end
+end
