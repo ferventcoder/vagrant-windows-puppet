@@ -1,9 +1,23 @@
-# Configuration for librarian-puppet.
+# Configuration for librarian-puppet
+forge 'https://forgeapi.puppetlabs.com'
 
-forge "https://forgeapi.puppetlabs.com"
+#mod 'puppetlabs-windows'
+mod 'puppetlabs-powershell'
+mod 'puppetlabs-acl'
+mod 'puppetlabs-reboot'
+mod 'puppetlabs-registry'
+mod 'puppet-windowsfeature'
+mod 'puppet-iis'
+mod 'badgerious-windows_env'
+#mod 'puppetlabs-dism'
+# win facts
+# windows_firewall
 
-mod 'puppetlabs/powershell'
-mod 'puppetlabs/stdlib'
-#mod 'puppetlabs/registry'
+mod 'chocolatey-chocolatey'
+mod 'chocolatey-chocolatey_server'
 
-mod 'chocolatey/chocolatey'
+mod 'puppetlabs-dsc',
+  :git => 'git://github.com/puppetlabs/puppetlabs-dsc.git',
+  :ref => 'master'
+
+mod 'puppetlabs-stdlib'

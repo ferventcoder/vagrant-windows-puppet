@@ -1,11 +1,18 @@
-# Configuration for librarian-puppet.
+# Configuration for librarian-puppet
+forge 'https://forgeapi.puppetlabs.com'
 
-forge "http://forge.puppetlabs.com"
+#mod 'puppetlabs-windows'
+# using local
+#mod 'puppetlabs-powershell'
+mod 'puppetlabs-acl'
+mod 'puppetlabs-reboot'
+mod 'puppetlabs-registry'
+mod 'puppetlabs-stdlib'
+#mod 'puppetlabs-dism'
 
-mod 'joshcooper/powershell'
+mod 'puppet-windowsfeature'
+mod 'puppet-iis'
+mod 'badgerious-windows_env'
 
-mod 'puppetlabs/registry'
+# mod 'chocolatey-chocolatey'
 
-mod 'rismoney/chocolatey' #,
-  #:git => 'git://github.com/ferventcoder/puppet-chocolatey.git',
-  #:ref => "all_the_things"
