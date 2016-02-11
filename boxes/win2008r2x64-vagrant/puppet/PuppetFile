@@ -13,6 +13,5 @@ mod 'puppetlabs-stdlib'
 mod 'puppet-windowsfeature'
 mod 'puppet-iis'
 mod 'badgerious-windows_env'
-
-# mod 'chocolatey-chocolatey'
+mod 'chocolatey-chocolatey'
 
