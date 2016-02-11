@@ -31,6 +31,9 @@ $wmfInstallerFile = 'WindowsBlue-KB3037315-x64.msu'
 # April 2015 WMF 5.0 Preview
 $wmfDownloadUrl = 'http://download.microsoft.com/download/4/9/6/496E0D89-F3B0-4FB0-B110-5F135C30325F/WindowsBlue-KB3055381-x64.msu'
 $wmfInstallerFile = 'WindowsBlue-KB3055381-x64.msu'
+
+#NOTE YOU HAVE TO SET THE WINDOWS SYSTEM BACK IN TIME TO USE THE ABOVE - Pick like June
+
 # August 2015 Production Preview
 $wmfDownloadUrl = 'https://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win8.1AndW2K12R2-KB3066437-x64.msu'
 $wmfInstallerFile = 'Win8.1AndW2K12R2-KB3066437-x64.msu'
