@@ -15,6 +15,8 @@ $ChocoInstallPath = "$env:SystemDrive\ProgramData\Chocolatey\bin"
 #   [Environment]::SetEnvironmentVariable('Path', $ActualPath + $ChocoInstallPath, [System.EnvironmentVariableTarget]::Machine)
 # }
 
+$env:ChocolateyInstall = "C:\ProgramData\chocolatey"
+
 # $env:Path += ";$ChocoInstallPath"
 
 if (!(Test-Path $ChocoInstallPath)) {
