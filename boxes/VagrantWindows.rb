@@ -13,10 +13,12 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--audio", "none"]
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     v.customize ["modifyvm", :id, "--usb", "off"]
+    v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
   end
 
   config.vm.provider :vmware_fusion do |v|
     v.gui = true
+    v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
     #v.vmx["memsize"] = "1024"
     #v.vmx["numvcpus"] = "2"
     v.vmx["usb.present"] = "false"
