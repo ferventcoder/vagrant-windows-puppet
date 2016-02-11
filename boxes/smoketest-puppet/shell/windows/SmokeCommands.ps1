@@ -36,6 +36,8 @@ TimedCommand {puppet --version}
 TimedCommand {facter --version}
 TimedCommand {hiera --version}
 TimedCommand {cmd /c "environment.bat && where ruby && ruby --version"}
+TimedCommand {cmd /c "environment.bat && ruby -ropenssl -e 'puts OpenSSL::OPENSSL_VERSION'"}
+TimedCommand {cmd /c "environment.bat && ruby -ropenssl -e 'puts OpenSSL::Config::DEFAULT_CONFIG_FILE'"}
 
 "===============" | Out-File "$LogFile" -Append
 "Help Commands"   | Out-File "$LogFile" -Append
