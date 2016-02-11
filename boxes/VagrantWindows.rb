@@ -6,6 +6,8 @@ end
 Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |v|
     v.gui = true
+    v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
+    # customize
     #v.customize ["modifyvm", :id, "--memory", "1024"]
     #v.customize ["modifyvm", :id, "--cpus", "2"]
     #v.customize ["modifyvm", :id, "--vram", 32]
@@ -13,12 +15,12 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--audio", "none"]
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     v.customize ["modifyvm", :id, "--usb", "off"]
-    v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
   end
 
   config.vm.provider :vmware_fusion do |v|
     v.gui = true
     v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
+    # customize
     #v.vmx["memsize"] = "1024"
     #v.vmx["numvcpus"] = "2"
     v.vmx["usb.present"] = "false"
@@ -42,31 +44,8 @@ Vagrant.configure("2") do |config|
   # Port forward SSH (ssh is forwarded by default in most versions of Vagrant, but be sure)
   #  It's not necessary if you are not using SSH, but it doesn't hurt anything to have it
   config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", auto_correct: true
+  config.vm.network :forwarded_port, guest: 80, host: 9080, id: "web", auto_correct: true
 
   #from the perspective of the box itself, not the current directory
   config.vm.synced_folder "../shared", "/vagrantshared"
-
-  # config.vm.synced_folder "~", "/home"
-  # config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
-
-  # # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
-  # config.vm.provision :shell, :path => "shell/main.cmd"
-
-  # # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # # are contained in a directory path relative to this Vagrantfile.
-  # config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
-  #   puppet.manifests_path = "puppet/manifests"
-  #   puppet.manifest_file  = "site.pp"
-  #   puppet.module_path = "puppet/modules"
-  #   puppet.facter = {
-  #     "domain" => "local",
-  #     "kernel" => "windows",
-  #     "operatingsystem" => "windows",
-  #     "osfamily" => "windows",
-  #   }
-  # end
-  #
-  # net stop puppet
-  # rename puppet puppet.old
-  # mklink "C:\Program Files (x86)\Puppet Labs\Puppet\puppet" c:\code\puppetlabs\puppet
 end
