@@ -26,11 +26,20 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "puppet/modules", "/ProgramData/PuppetLabs/code/environments/production/modules"
 
   # These install chocolatey, ruby, and puppet. Also runs librarian-puppet.
-  config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
-  config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
-  config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
-  #config.vm.provision :shell, :path => "../shared/shell/PreparePuppetProvisioner.ps1"
-  config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
+  if Vagrant::VERSION < '1.8.0'
+    config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+    config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
+    config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+    #config.vm.provision :shell, :path => "../shared/shell/PreparePuppetProvisioner.ps1"
+    config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
+  else
+    config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1", :powershell_elevated_interactive => true
+    config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1", :powershell_elevated_interactive => true
+    config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1", :powershell_elevated_interactive => true
+    #config.vm.provision :shell, :path => "../shared/shell/PreparePuppetProvisioner.ps1", :powershell_elevated_interactive => true
+    config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1", :powershell_elevated_interactive => true
+  end
+
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
