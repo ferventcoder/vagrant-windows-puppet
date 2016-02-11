@@ -21,13 +21,19 @@ Vagrant.configure("2") do |config|
     override.vm.network :private_network, ip: "192.168.0.8"
   end
 
-  config.vm.synced_folder "~", "/home"
-  config.vm.synced_folder "puppet/box_modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
+  config.vm.synced_folder "puppet/modules", "/ProgramData/PuppetLabs/puppet/etc/modules"
+  config.vm.synced_folder "puppet/modules", "/ProgramData/PuppetLabs/code/environments/production/modules"
 
-  # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
-  config.vm.provision :shell, :path => "../shared/shell/main.cmd"
+  # These install chocolatey, ruby, and puppet. Also runs librarian-puppet.
+  config.vm.provision :shell, :path => "../shared/shell/PrepareWindows.ps1"
+  config.vm.provision :shell, :path => "../shared/shell/InstallChocolatey.ps1"
+
 
   if !install_pe
+    config.vm.provision :shell, :path => "../shared/shell/InstallPuppetFromMSI.ps1"
+  #config.vm.provision :shell, :path => "../shared/shell/PreparePuppetProvisioner.ps1"
+    config.vm.provision :shell, :path => "../shared/shell/NotifyGuiAppsOfEnvironmentChanges.ps1"
+
     # Enable provisioning with Puppet stand alone.  Puppet manifests
     # are contained in a directory path relative to this Vagrantfile.
     config.vm.provision :puppet, :options => ["--debug --trace --verbose"] do |puppet|
