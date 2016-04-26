@@ -1,5 +1,5 @@
 install_pe = false
-pe_version = '3.8.0'
+pe_version = '2016.1'
 #Vagrant.require_plugin "vagrant-windows"
 
 if install_pe
@@ -17,9 +17,12 @@ Vagrant.configure("2") do |config|
     master.vm.box = "centos-6.5-64-nocm"
 
     master.vm.provider :virtualbox do |v, override|
+      v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
       override.vm.network :private_network, ip: "192.168.0.6"
       # Use the host's DNS resolver
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      # make sure you've given the master enough memory.
+      # It's closer to 6GB req in the 4.x series
       v.customize ["modifyvm", :id, "--memory", "2048"]
       v.customize ["modifyvm", :id, "--cpus", "2"]
     end
@@ -54,6 +57,7 @@ Vagrant.configure("2") do |config|
   #   centos.vm.provider :virtualbox do |v, override|
   #     override.vm.network :private_network, ip: "192.168.0.7"
   #     # Use the host's DNS resolver
+  #     v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
   #     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   #   end
 
@@ -115,6 +119,7 @@ Vagrant.configure("2") do |config|
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
     win2012.vm.provider :virtualbox do |v, override|
+      v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
       override.vm.network :private_network, ip: "192.168.0.12"
       # Don't boot with headless mode
       v.gui = true
@@ -176,6 +181,7 @@ Vagrant.configure("2") do |config|
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
     win2008.vm.provider :virtualbox do |v, override|
+      v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
       override.vm.network :private_network, ip: "192.168.0.12"
       # Don't boot with headless mode
       v.gui = true
@@ -236,6 +242,7 @@ Vagrant.configure("2") do |config|
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
     win2003.vm.provider :virtualbox do |v, override|
+      v.linked_clone = true if Vagrant::VERSION >= '1.8.0'
       override.vm.network :private_network, ip: "192.168.0.12"
       # Don't boot with headless mode
       v.gui = true
