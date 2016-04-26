@@ -2,7 +2,8 @@
 forge 'https://forgeapi.puppetlabs.com'
 
 #mod 'puppetlabs-windows'
-mod 'puppetlabs-powershell'
+# using local
+#mod 'puppetlabs-powershell'
 mod 'puppetlabs-acl'
 mod 'puppetlabs-reboot'
 mod 'puppetlabs-registry'
@@ -12,5 +13,5 @@ mod 'puppetlabs-stdlib'
 mod 'puppet-windowsfeature'
 mod 'puppet-iis'
 mod 'badgerious-windows_env'
+mod 'chocolatey-chocolatey'
 
-# mod 'chocolatey-chocolatey'
