@@ -38,6 +38,10 @@ $wmfInstallerFile = 'WindowsBlue-KB3055381-x64.msu'
 $wmfDownloadUrl = 'https://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win8.1AndW2K12R2-KB3066437-x64.msu'
 $wmfInstallerFile = 'Win8.1AndW2K12R2-KB3066437-x64.msu'
 
+# WMF 5.0 Final
+$wmfDownloadUrl = 'https://www.microsoft.com/en-us/download/confirmation.aspx?id=50395&6B49FDFB-8E5B-4B07-BC31-15695C5A2143=1'
+$wmfInstallerFile = 'W2K12-KB3134759-x64.msu'
+
 $wmfInstaller = Join-Path $wmfPath $wmfInstallerFile
 
 if (!(Test-Path $wmfPath)) {
